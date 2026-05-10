@@ -51,9 +51,6 @@
           <a href="#projects"   class="nav-link" data-target="projects">
             <i class="fas fa-code" aria-hidden="true"></i> Projects
           </a>
-          <a href="#github"     class="nav-link" data-target="github">
-            <i class="fab fa-github" aria-hidden="true"></i> GitHub
-          </a>
         </nav>
 
         <!-- Skills -->
@@ -237,78 +234,6 @@
         </div>
       </section>
 
-      <!-- GitHub -->
-      <section id="github" class="section">
-        <h2 class="section-title">
-          <span class="section-num">04.</span> GitHub Presence
-        </h2>
-
-        <!-- Live metric cards -->
-        <div class="gh-metrics">
-          <div class="metric-card">
-            <i class="fas fa-book-bookmark" aria-hidden="true"></i>
-            <span class="metric-val" id="m-repos">&mdash;</span>
-            <span class="metric-label">Public Repos</span>
-          </div>
-          <div class="metric-card">
-            <i class="fas fa-users" aria-hidden="true"></i>
-            <span class="metric-val" id="m-followers">&mdash;</span>
-            <span class="metric-label">Followers</span>
-          </div>
-          <div class="metric-card">
-            <i class="fas fa-star" aria-hidden="true"></i>
-            <span class="metric-val" id="m-stars">&mdash;</span>
-            <span class="metric-label">Stars Earned</span>
-          </div>
-          <div class="metric-card">
-            <i class="fas fa-code-fork" aria-hidden="true"></i>
-            <span class="metric-val" id="m-forks">&mdash;</span>
-            <span class="metric-label">Forks</span>
-          </div>
-        </div>
-
-        <!-- Streak -->
-        <div class="stat-card stat-card--full">
-          <img
-            src="https://streak-stats.vercel.app/?user=diogo-serra&theme=nord&hide_border=true&background=0c1424&ring=00bfff&fire=1e6fff&currStreakLabel=00bfff&currStreakNum=e2e8f0&sideLabels=64748b&dates=475569"
-            alt="GitHub Streak Stats"
-            loading="lazy"
-          />
-        </div>
-
-        <!-- Contribution Calendar -->
-        <div class="stat-card stat-card--full contrib-card">
-          <p class="contrib-title">
-            <i class="fas fa-calendar-days" aria-hidden="true"></i>
-            Daily Contributions
-          </p>
-          <div id="contrib-calendar" class="contrib-calendar">
-            <div class="contrib-loading">
-              <i class="fas fa-circle-notch fa-spin" aria-hidden="true"></i>
-              <span>Loading&hellip;</span>
-            </div>
-          </div>
-          <div class="contrib-legend">
-            <span class="legend-label">Less</span>
-            <span class="legend-cell" data-level="0"></span>
-            <span class="legend-cell" data-level="1"></span>
-            <span class="legend-cell" data-level="2"></span>
-            <span class="legend-cell" data-level="3"></span>
-            <span class="legend-cell" data-level="4"></span>
-            <span class="legend-label">More</span>
-          </div>
-        </div>
-
-        <!-- Activity Graph -->
-        <div class="stat-card stat-card--full stat-card--graph">
-          <img
-            src="https://github-readme-activity-graph.vercel.app/graph?username=diogo-serra&bg_color=0c1424&color=00bfff&line=1e6fff&point=00bfff&area=true&area_color=1e6fff&hide_border=true"
-            alt="GitHub Activity Graph"
-            loading="lazy"
-          />
-        </div>
-      </section>
-
       <footer class="page-footer">
         <p>
           Designed &amp; built by <strong>Diogo Serra</strong>
@@ -433,113 +358,6 @@
 
     loadRepos();
 
-    // ── GitHub stats metrics ──────────────────────────────────────
-    async function loadGithubStats() {
-      try {
-        const [userRes, reposRes] = await Promise.all([
-          fetch('https://api.github.com/users/Diogo-Serra'),
-          fetch('https://api.github.com/users/Diogo-Serra/repos?per_page=100&type=public'),
-        ]);
-        if (!userRes.ok || !reposRes.ok) return;
-
-        const user  = await userRes.json();
-        const repos = await reposRes.json();
-
-        const stars = repos.reduce((s, r) => s + (r.stargazers_count || 0), 0);
-        const forks = repos.reduce((s, r) => s + (r.forks_count      || 0), 0);
-
-        const targets = {
-          'm-repos':     user.public_repos ?? repos.length,
-          'm-followers': user.followers    ?? 0,
-          'm-stars':     stars,
-          'm-forks':     forks,
-        };
-
-        Object.entries(targets).forEach(([id, target]) => {
-          const el = document.getElementById(id);
-          if (!el) return;
-          let startTs = null;
-          const duration = 900;
-          const step = ts => {
-            if (!startTs) startTs = ts;
-            const p = Math.min((ts - startTs) / duration, 1);
-            el.textContent = Math.round(p * target);
-            if (p < 1) requestAnimationFrame(step);
-            else el.textContent = target;
-          };
-          requestAnimationFrame(step);
-        });
-      } catch {
-        // fail silently — values stay as dashes
-      }
-    }
-
-    loadGithubStats();
-
-    // ── Contribution calendar ─────────────────────────────────────
-    async function loadContributions() {
-      const container = document.getElementById('contrib-calendar');
-      if (!container) return;
-      try {
-        const res = await fetch(
-          'https://github-contributions-api.jogruber.de/v4/diogo-serra?y=last'
-        );
-        if (!res.ok) throw new Error();
-        const data = await res.json();
-
-        const dayMap = {};
-        data.contributions.forEach(d => { dayMap[d.date] = d; });
-
-        // Build 52 complete weeks ending with the current week
-        const today = new Date();
-        today.setHours(0, 0, 0, 0);
-        const endSunday = new Date(today);
-        endSunday.setDate(today.getDate() + (6 - today.getDay())); // end of current week (Sat)
-        const startDate = new Date(endSunday);
-        startDate.setDate(endSunday.getDate() - 52 * 7 + 1);
-
-        const weeks = [];
-        let cur = new Date(startDate);
-        for (let w = 0; w < 52; w++) {
-          const week = [];
-          for (let day = 0; day < 7; day++) {
-            const ds = cur.toISOString().split('T')[0];
-            const c = dayMap[ds];
-            week.push({ date: ds, level: c ? c.level : 0, count: c ? c.count : 0 });
-            cur.setDate(cur.getDate() + 1);
-          }
-          weeks.push(week);
-        }
-
-        const MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-        let lastMonth = -1;
-        let monthsHtml = '<div class="contrib-months">';
-        weeks.forEach(week => {
-          const m = new Date(week[0].date).getMonth();
-          monthsHtml += `<span class="contrib-month-lbl">${m !== lastMonth ? MONTHS[m] : ''}</span>`;
-          lastMonth = m;
-        });
-        monthsHtml += '</div>';
-
-        let weeksHtml = '<div class="contrib-weeks">';
-        weeks.forEach(week => {
-          weeksHtml += '<div class="contrib-week">';
-          week.forEach(day => {
-            const label = `${day.date}: ${day.count} contribution${day.count !== 1 ? 's' : ''}`;
-            weeksHtml += `<div class="contrib-day" data-level="${day.level}" title="${label}"></div>`;
-          });
-          weeksHtml += '</div>';
-        });
-        weeksHtml += '</div>';
-
-        container.innerHTML = monthsHtml + weeksHtml;
-      } catch {
-        container.innerHTML =
-          '<p style="padding:20px;color:var(--text-muted);font-size:.82rem;text-align:center">Could not load contribution data.</p>';
-      }
-    }
-
-    loadContributions();
   </script>
 </body>
 </html>
