@@ -85,10 +85,8 @@ em {
 .sidebar {
   position: relative;
   height: 100vh;
-  overflow-y: auto;
+  overflow: hidden;
   background: var(--bg-sidebar);
-  scrollbar-width: thin;
-  scrollbar-color: var(--border) transparent;
 }
 
 /* glowing right edge */
@@ -141,7 +139,8 @@ em {
   width: 100%;
   height: 100%;
   border-radius: 50%;
-  object-fit: cover;
+  object-fit: contain;
+  object-position: center;
   display: block;
   background: var(--bg-card);
 }
