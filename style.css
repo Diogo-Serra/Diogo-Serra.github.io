@@ -1011,10 +1011,18 @@ em {
   grid-template-columns: 1fr 1fr;
   gap: 16px;
   margin-bottom: 16px;
+  align-items: stretch;
 }
 
 /* Block wrapper */
-.gh-block {}
+.gh-block {
+  display: flex;
+  flex-direction: column;
+}
+
+.gh-block > .stat-card {
+  flex: 1;
+}
 
 .gh-block--full {
   width: 100%;
