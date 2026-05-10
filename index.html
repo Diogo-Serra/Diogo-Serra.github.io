@@ -441,7 +441,7 @@
 
         const repos = await res.json();
         const HIDDEN = ['Diogo-Serra', 'Diogo-Serra.github.io'];
-        const items = repos.filter(r => !r.fork && !HIDDEN.includes(r.name)).slice(0, 10);
+        const items = repos.filter(r => !r.fork && !HIDDEN.includes(r.name)).slice(0, 12);
 
         if (!items.length) {
           grid.innerHTML = '<p class="repos-status">No public repositories found.</p>';
