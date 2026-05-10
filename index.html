@@ -142,7 +142,7 @@
             I'm a <strong>software developer</strong> specializing in
             <strong>systems programming</strong> and <strong>cybersecurity</strong>.
             Currently honing my craft at <strong>42 School</strong>, where I tackle
-            challenging projects from the ground up — no hand-holding, no shortcuts,
+            challenging projects from the ground up, no hand-holding, no shortcuts,
             just real engineering under pressure.
           </p>
           <p>
@@ -194,7 +194,7 @@
                   </span>
                 </div>
                 <p>
-                  Intensive peer-to-peer learning environment with zero lectures —
+                  Intensive peer-to-peer learning environment with zero lectures -
                   pure project-based engineering. Building everything from scratch:
                   Unix shells, memory allocators, network daemons, 3D ray-casters,
                   and more.
@@ -267,70 +267,35 @@
           </div>
         </div>
 
-        <!-- Streak + Top Languages -->
-        <div class="stats-grid">
-          <div class="stat-card">
-            <img
-              src="https://streak-stats.vercel.app/?user=diogo-serra&theme=nord&hide_border=true&background=0c1424&ring=00bfff&fire=1e6fff&currStreakLabel=00bfff&currStreakNum=e2e8f0&sideLabels=64748b&dates=475569"
-              alt="GitHub Streak Stats"
-              loading="lazy"
-            />
-          </div>
-          <div class="stat-card lang-card">
-            <p class="lang-card-title">
-              <i class="fas fa-chart-bar" aria-hidden="true"></i>
-              Top Languages
-            </p>
-            <div class="lang-list">
-              <div class="lang-item">
-                <div class="lang-icon">
-                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/c/c-original.svg" alt="C" />
-                </div>
-                <div class="lang-bar-wrap">
-                  <div class="lang-bar-top">
-                    <span class="lang-name">C</span>
-                    <span class="lang-pct">62%</span>
-                  </div>
-                  <div class="lang-track"><div class="lang-fill" style="--w:62%; --c:#6599c8"></div></div>
-                </div>
-              </div>
-              <div class="lang-item">
-                <div class="lang-icon">
-                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" alt="Python" />
-                </div>
-                <div class="lang-bar-wrap">
-                  <div class="lang-bar-top">
-                    <span class="lang-name">Python</span>
-                    <span class="lang-pct">21%</span>
-                  </div>
-                  <div class="lang-track"><div class="lang-fill" style="--w:21%; --c:#3572a5"></div></div>
-                </div>
-              </div>
-              <div class="lang-item">
-                <div class="lang-icon">
-                  <i class="fas fa-terminal" style="color:#89e051" aria-hidden="true"></i>
-                </div>
-                <div class="lang-bar-wrap">
-                  <div class="lang-bar-top">
-                    <span class="lang-name">Shell</span>
-                    <span class="lang-pct">11%</span>
-                  </div>
-                  <div class="lang-track"><div class="lang-fill" style="--w:11%; --c:#89e051"></div></div>
-                </div>
-              </div>
-              <div class="lang-item">
-                <div class="lang-icon">
-                  <i class="fab fa-js" style="color:#f1e05a" aria-hidden="true"></i>
-                </div>
-                <div class="lang-bar-wrap">
-                  <div class="lang-bar-top">
-                    <span class="lang-name">JavaScript</span>
-                    <span class="lang-pct">6%</span>
-                  </div>
-                  <div class="lang-track"><div class="lang-fill" style="--w:6%; --c:#f1e05a"></div></div>
-                </div>
-              </div>
+        <!-- Streak -->
+        <div class="stat-card stat-card--full">
+          <img
+            src="https://streak-stats.vercel.app/?user=diogo-serra&theme=nord&hide_border=true&background=0c1424&ring=00bfff&fire=1e6fff&currStreakLabel=00bfff&currStreakNum=e2e8f0&sideLabels=64748b&dates=475569"
+            alt="GitHub Streak Stats"
+            loading="lazy"
+          />
+        </div>
+
+        <!-- Contribution Calendar -->
+        <div class="stat-card stat-card--full contrib-card">
+          <p class="contrib-title">
+            <i class="fas fa-calendar-days" aria-hidden="true"></i>
+            Daily Contributions
+          </p>
+          <div id="contrib-calendar" class="contrib-calendar">
+            <div class="contrib-loading">
+              <i class="fas fa-circle-notch fa-spin" aria-hidden="true"></i>
+              <span>Loading&hellip;</span>
             </div>
+          </div>
+          <div class="contrib-legend">
+            <span class="legend-label">Less</span>
+            <span class="legend-cell" data-level="0"></span>
+            <span class="legend-cell" data-level="1"></span>
+            <span class="legend-cell" data-level="2"></span>
+            <span class="legend-cell" data-level="3"></span>
+            <span class="legend-cell" data-level="4"></span>
+            <span class="legend-label">More</span>
           </div>
         </div>
 
@@ -510,6 +475,71 @@
     }
 
     loadGithubStats();
+
+    // ── Contribution calendar ─────────────────────────────────────
+    async function loadContributions() {
+      const container = document.getElementById('contrib-calendar');
+      if (!container) return;
+      try {
+        const res = await fetch(
+          'https://github-contributions-api.jogruber.de/v4/diogo-serra?y=last'
+        );
+        if (!res.ok) throw new Error();
+        const data = await res.json();
+
+        const dayMap = {};
+        data.contributions.forEach(d => { dayMap[d.date] = d; });
+
+        // Build 52 complete weeks ending with the current week
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+        const endSunday = new Date(today);
+        endSunday.setDate(today.getDate() + (6 - today.getDay())); // end of current week (Sat)
+        const startDate = new Date(endSunday);
+        startDate.setDate(endSunday.getDate() - 52 * 7 + 1);
+
+        const weeks = [];
+        let cur = new Date(startDate);
+        for (let w = 0; w < 52; w++) {
+          const week = [];
+          for (let day = 0; day < 7; day++) {
+            const ds = cur.toISOString().split('T')[0];
+            const c = dayMap[ds];
+            week.push({ date: ds, level: c ? c.level : 0, count: c ? c.count : 0 });
+            cur.setDate(cur.getDate() + 1);
+          }
+          weeks.push(week);
+        }
+
+        const MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+        let lastMonth = -1;
+        let monthsHtml = '<div class="contrib-months">';
+        weeks.forEach(week => {
+          const m = new Date(week[0].date).getMonth();
+          monthsHtml += `<span class="contrib-month-lbl">${m !== lastMonth ? MONTHS[m] : ''}</span>`;
+          lastMonth = m;
+        });
+        monthsHtml += '</div>';
+
+        let weeksHtml = '<div class="contrib-weeks">';
+        weeks.forEach(week => {
+          weeksHtml += '<div class="contrib-week">';
+          week.forEach(day => {
+            const label = `${day.date}: ${day.count} contribution${day.count !== 1 ? 's' : ''}`;
+            weeksHtml += `<div class="contrib-day" data-level="${day.level}" title="${label}"></div>`;
+          });
+          weeksHtml += '</div>';
+        });
+        weeksHtml += '</div>';
+
+        container.innerHTML = monthsHtml + weeksHtml;
+      } catch {
+        container.innerHTML =
+          '<p style="padding:20px;color:var(--text-muted);font-size:.82rem;text-align:center">Could not load contribution data.</p>';
+      }
+    }
+
+    loadContributions();
   </script>
 </body>
 </html>
