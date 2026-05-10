@@ -368,13 +368,17 @@ em {
    Banner Cat
 ══════════════════════════════════════════════════════════ */
 .top-banner {
+  position: sticky;
+  top: 0;
+  z-index: 10;
   display: flex;
   align-items: center;
   gap: 14px;
   width: 100%;
-  padding: 22px 52px;
+  padding: 14px 52px;
   border-bottom: 1px solid var(--border);
   background: linear-gradient(90deg, var(--bg-card) 0%, rgba(0,191,255,0.04) 100%);
+  backdrop-filter: blur(8px);
   letter-spacing: 0.01em;
 }
 
@@ -399,19 +403,26 @@ em {
   white-space: nowrap;
 }
 
-.top-banner-tag {
+.top-banner-nav {
   margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.top-banner-nav a {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   font-weight: 500;
+  color: var(--text-muted);
+  text-decoration: none;
+  letter-spacing: 0.06em;
+  text-transform: lowercase;
+  transition: color 0.18s;
+}
+
+.top-banner-nav a:hover {
   color: var(--blue);
-  background: var(--blue-dim);
-  border: 1px solid rgba(0,191,255,0.18);
-  border-radius: 20px;
-  padding: 3px 12px;
-  white-space: nowrap;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
 }
 
 /* ══════════════════════════════════════════════════════════
