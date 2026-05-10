@@ -85,7 +85,9 @@ em {
 .sidebar {
   position: relative;
   height: 100vh;
-  overflow: hidden;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
   background: var(--bg-sidebar);
 }
 
@@ -410,21 +412,25 @@ em {
 .top-banner-nav {
   margin-left: auto;
   display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
   align-items: center;
   gap: 28px;
 }
 
-.top-banner-nav a {
+.banner-nav-link {
   font-family: 'JetBrains Mono', monospace;
   font-size: 0.75rem;
   font-weight: 400;
   color: var(--text-dim);
   text-decoration: none;
   letter-spacing: 0.04em;
+  white-space: nowrap;
   transition: color 0.18s;
 }
 
-.top-banner-nav a:hover {
+.banner-nav-link:hover,
+.banner-nav-link.active {
   color: var(--blue);
 }
 

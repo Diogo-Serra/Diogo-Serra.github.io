@@ -113,10 +113,10 @@
         <span class="top-banner-sep">·</span>
         <span class="top-banner-role">Software Developer</span>
         <nav class="top-banner-nav">
-          <a href="#about" class="nav-link" data-target="about">about</a>
-          <a href="#experience" class="nav-link" data-target="experience">experience</a>
-          <a href="#projects" class="nav-link" data-target="projects">projects</a>
-          <a href="#github" class="nav-link" data-target="github">github</a>
+          <a href="#about" class="banner-nav-link" data-target="about">about</a>
+          <a href="#experience" class="banner-nav-link" data-target="experience">experience</a>
+          <a href="#projects" class="banner-nav-link" data-target="projects">projects</a>
+          <a href="#github" class="banner-nav-link" data-target="github">github</a>
         </nav>
       </div>
 
@@ -409,7 +409,7 @@
 
     // ── Smooth navigation + active state ──────────────────────────
     const panel     = document.querySelector('.content-scroll');
-    const navLinks  = document.querySelectorAll('.nav-link');
+    const navLinks  = document.querySelectorAll('.nav-link, .banner-nav-link');
     const sections  = document.querySelectorAll('.section');
 
     function setActive(id) {
