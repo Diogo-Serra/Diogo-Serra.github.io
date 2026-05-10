@@ -108,17 +108,19 @@
     <main class="content" id="content-panel">
 
       <!-- Banner -->
-      <div class="top-banner">
+      <div class="top-banner" id="top-banner">
         <span class="top-banner-name">Diogo Serra</span>
         <span class="top-banner-sep">·</span>
         <span class="top-banner-role">Software Developer</span>
         <nav class="top-banner-nav">
-          <a href="#about">about</a>
-          <a href="#experience">experience</a>
-          <a href="#projects">projects</a>
-          <a href="#github">github</a>
+          <a href="#about" class="nav-link" data-target="about">about</a>
+          <a href="#experience" class="nav-link" data-target="experience">experience</a>
+          <a href="#projects" class="nav-link" data-target="projects">projects</a>
+          <a href="#github" class="nav-link" data-target="github">github</a>
         </nav>
       </div>
+
+      <div class="content-scroll">
 
       <!-- About -->
       <section id="about" class="section">
@@ -396,6 +398,8 @@
         </p>
       </footer>
 
+      </div><!-- /.content-scroll -->
+
     </main>
   </div>
 
@@ -404,7 +408,7 @@
     document.getElementById('year').textContent = new Date().getFullYear();
 
     // ── Smooth navigation + active state ──────────────────────────
-    const panel     = document.getElementById('content-panel');
+    const panel     = document.querySelector('.content-scroll');
     const navLinks  = document.querySelectorAll('.nav-link');
     const sections  = document.querySelectorAll('.section');
 
