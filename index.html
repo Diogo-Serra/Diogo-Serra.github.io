@@ -415,6 +415,12 @@
     // ── Current year ──────────────────────────────────────────────
     document.getElementById('year').textContent = new Date().getFullYear();
 
+    // ── Always start at top, clear any hash ───────────────────────
+    if (window.location.hash) {
+      history.replaceState(null, '', window.location.pathname);
+    }
+    document.querySelector('.content-scroll').scrollTop = 0;
+
     // ── Smooth navigation + active state ──────────────────────────
     const panel     = document.querySelector('.content-scroll');
     const navLinks  = document.querySelectorAll('.nav-link, .banner-nav-link');
