@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Diogo Serra — Software Developer specializing in systems programming and cybersecurity." />
+  <title>Diogo Serra — Software Developer</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="layout">
+
+    <!-- ══════════════════════════════════
+         SIDEBAR — fixed left panel
+    ══════════════════════════════════ -->
+    <aside class="sidebar">
+      <div class="sidebar-inner">
+
+        <!-- Profile -->
+        <div class="profile-block">
+          <div class="avatar-ring">
+            <img
+              src="https://github.com/Diogo-Serra.png"
+              alt="Diogo Serra"
+              class="avatar"
+              onerror="this.src='https://ui-avatars.com/api/?name=Diogo+Serra&background=0c1424&color=00bfff&size=160'"
+            />
+          </div>
+          <h1 class="profile-name">Diogo Serra</h1>
+          <p class="profile-title">Software Developer</p>
+          <p class="profile-subtitle">Systems &middot; Cybersecurity</p>
+          <div class="status-badge">
+            <span class="status-dot"></span>
+            <span>42 School &mdash; Active</span>
+          </div>
+        </div>
+
+        <!-- Nav -->
+        <nav class="sidebar-nav" aria-label="Page sections">
+          <a href="#about"      class="nav-link active" data-target="about">
+            <i class="fas fa-user" aria-hidden="true"></i> About
+          </a>
+          <a href="#experience" class="nav-link" data-target="experience">
+            <i class="fas fa-briefcase" aria-hidden="true"></i> Experience
+          </a>
+          <a href="#projects"   class="nav-link" data-target="projects">
+            <i class="fas fa-code" aria-hidden="true"></i> Projects
+          </a>
+          <a href="#github"     class="nav-link" data-target="github">
+            <i class="fab fa-github" aria-hidden="true"></i> GitHub
+          </a>
+        </nav>
+
+        <!-- Skills -->
+        <div class="skills-block">
+          <h2 class="block-label">Skills</h2>
+
+          <div class="skill-group">
+            <p class="skill-group-label">Languages</p>
+            <div class="tags">
+              <span class="tag">C</span>
+              <span class="tag">Python</span>
+              <span class="tag">JavaScript</span>
+              <span class="tag">TypeScript</span>
+              <span class="tag">Bash</span>
+              <span class="tag">HTML</span>
+              <span class="tag">CSS</span>
+            </div>
+          </div>
+
+          <div class="skill-group">
+            <p class="skill-group-label">Tools &amp; Frameworks</p>
+            <div class="tags">
+              <span class="tag">React</span>
+              <span class="tag">Node.js</span>
+              <span class="tag">Nginx</span>
+              <span class="tag">Git</span>
+              <span class="tag">CMake</span>
+              <span class="tag">Vim</span>
+              <span class="tag">Figma</span>
+            </div>
+          </div>
+
+          <div class="skill-group">
+            <p class="skill-group-label">Databases</p>
+            <div class="tags">
+              <span class="tag">MySQL</span>
+              <span class="tag">PostgreSQL</span>
+              <span class="tag">MongoDB</span>
+            </div>
+          </div>
+
+          <div class="skill-group">
+            <p class="skill-group-label">Systems</p>
+            <div class="tags">
+              <span class="tag">Linux</span>
+              <span class="tag">Unix</span>
+              <span class="tag">macOS</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Social -->
+        <div class="social-block">
+          <a href="https://github.com/Diogo-Serra" target="_blank" rel="noopener noreferrer" class="social-link">
+            <i class="fab fa-github" aria-hidden="true"></i>
+            <span>GitHub</span>
+            <i class="fas fa-arrow-up-right-from-square ext-icon" aria-hidden="true"></i>
+          </a>
+          <a href="https://linkedin.com/in/diogo-serra" target="_blank" rel="noopener noreferrer" class="social-link">
+            <i class="fab fa-linkedin-in" aria-hidden="true"></i>
+            <span>LinkedIn</span>
+            <i class="fas fa-arrow-up-right-from-square ext-icon" aria-hidden="true"></i>
+          </a>
+        </div>
+
+        <!-- Quote -->
+        <blockquote class="sidebar-quote">
+          &ldquo;You must gather your party before venturing forth&rdquo;
+        </blockquote>
+
+      </div>
+    </aside>
+
+    <!-- ══════════════════════════════════
+         MAIN CONTENT — scrollable right panel
+    ══════════════════════════════════ -->
+    <main class="content" id="content-panel">
+
+      <!-- About -->
+      <section id="about" class="section">
+        <h2 class="section-title">
+          <span class="section-num">01.</span> About
+        </h2>
+        <div class="card">
+          <p>
+            I'm a <strong>software developer</strong> specializing in
+            <strong>systems programming</strong> and <strong>cybersecurity</strong>.
+            Currently honing my craft at <strong>42 School</strong>, where I tackle
+            challenging projects from the ground up — no hand-holding, no shortcuts,
+            just real engineering under pressure.
+          </p>
+          <p>
+            Passionate about low-level coding, automation, and building systems
+            that are not only functional but <em>secure by design</em>. I love
+            understanding how things work beneath the surface.
+          </p>
+          <div class="highlight-grid">
+            <div class="highlight-item">
+              <i class="fas fa-microchip" aria-hidden="true"></i>
+              <span>Systems Programming</span>
+            </div>
+            <div class="highlight-item">
+              <i class="fas fa-shield-halved" aria-hidden="true"></i>
+              <span>Cybersecurity</span>
+            </div>
+            <div class="highlight-item">
+              <i class="fas fa-terminal" aria-hidden="true"></i>
+              <span>Linux &amp; Unix</span>
+            </div>
+            <div class="highlight-item">
+              <i class="fas fa-robot" aria-hidden="true"></i>
+              <span>Automation</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Experience -->
+      <section id="experience" class="section">
+        <h2 class="section-title">
+          <span class="section-num">02.</span> Experience
+        </h2>
+        <div class="timeline">
+
+          <div class="card timeline-card">
+            <div class="tl-row">
+              <div class="tl-icon">
+                <i class="fas fa-graduation-cap" aria-hidden="true"></i>
+              </div>
+              <div class="tl-body">
+                <div class="tl-header">
+                  <div>
+                    <h3 class="job-title">Software Engineering Student</h3>
+                    <p class="company">42 School</p>
+                  </div>
+                  <span class="tl-date">
+                    <span class="tl-dot"></span> Current
+                  </span>
+                </div>
+                <p>
+                  Intensive peer-to-peer learning environment with zero lectures —
+                  pure project-based engineering. Building everything from scratch:
+                  Unix shells, memory allocators, network daemons, 3D ray-casters,
+                  and more.
+                </p>
+                <div class="tags">
+                  <span class="tag accent">C</span>
+                  <span class="tag accent">Linux</span>
+                  <span class="tag accent">Unix</span>
+                  <span class="tag accent">Algorithms</span>
+                  <span class="tag accent">Networks</span>
+                  <span class="tag accent">Security</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Projects -->
+      <section id="projects" class="section">
+        <h2 class="section-title">
+          <span class="section-num">03.</span> Projects
+        </h2>
+        <div id="repos-grid" class="repos-grid">
+          <div class="repos-status">
+            <i class="fas fa-circle-notch fa-spin" aria-hidden="true"></i>
+            <span>Loading repositories&hellip;</span>
+          </div>
+        </div>
+        <div class="section-cta">
+          <a
+            href="https://github.com/Diogo-Serra?tab=repositories"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-outline"
+          >
+            View all repositories <i class="fas fa-arrow-right" aria-hidden="true"></i>
+          </a>
+        </div>
+      </section>
+
+      <!-- GitHub -->
+      <section id="github" class="section">
+        <h2 class="section-title">
+          <span class="section-num">04.</span> GitHub Presence
+        </h2>
+        <div class="stats-grid">
+          <div class="stat-card">
+            <img
+              src="https://streak-stats.vercel.app/?user=diogo-serra&theme=nord&hide_border=true&background=0c1424&ring=00bfff&fire=1e6fff&currStreakLabel=00bfff&currStreakNum=e2e8f0&sideLabels=64748b&dates=475569"
+              alt="GitHub Streak Stats"
+              loading="lazy"
+            />
+          </div>
+          <div class="stat-card">
+            <img
+              src="https://github-readme-stats.vercel.app/api/top-langs/?username=diogo-serra&layout=compact&theme=nord&hide_border=true&bg_color=0c1424&title_color=00bfff&text_color=e2e8f0&langs_count=8"
+              alt="Top Languages"
+              loading="lazy"
+            />
+          </div>
+        </div>
+        <div class="stat-card stat-card--full">
+          <img
+            src="https://github-readme-stats.vercel.app/api?username=diogo-serra&show_icons=true&theme=nord&hide_border=true&bg_color=0c1424&title_color=00bfff&icon_color=1e6fff&text_color=e2e8f0"
+            alt="GitHub Stats"
+            loading="lazy"
+          />
+        </div>
+        <div class="stat-card stat-card--full stat-card--graph">
+          <img
+            src="https://github-readme-activity-graph.vercel.app/graph?username=diogo-serra&bg_color=0c1424&color=00bfff&line=1e6fff&point=00bfff&area=true&area_color=1e6fff&hide_border=true"
+            alt="GitHub Activity Graph"
+            loading="lazy"
+          />
+        </div>
+      </section>
+
+      <footer class="page-footer">
+        <p>
+          Designed &amp; built by <strong>Diogo Serra</strong>
+          &nbsp;&mdash;&nbsp;
+          <a href="https://github.com/Diogo-Serra" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-github" aria-hidden="true"></i> GitHub
+          </a>
+          &nbsp;&middot;&nbsp;
+          <span id="year"></span>
+        </p>
+      </footer>
+
+    </main>
+  </div>
+
+  <script>
+    // ── Current year ──────────────────────────────────────────────
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // ── Smooth navigation + active state ──────────────────────────
+    const panel     = document.getElementById('content-panel');
+    const navLinks  = document.querySelectorAll('.nav-link');
+    const sections  = document.querySelectorAll('.section');
+
+    function setActive(id) {
+      navLinks.forEach(link =>
+        link.classList.toggle('active', link.dataset.target === id)
+      );
+    }
+
+    navLinks.forEach(link => {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        const target = document.getElementById(link.dataset.target);
+        if (target) panel.scrollTo({ top: target.offsetTop - 32, behavior: 'smooth' });
+      });
+    });
+
+    panel.addEventListener('scroll', () => {
+      let current = sections[0].id;
+      sections.forEach(sec => {
+        if (panel.scrollTop >= sec.offsetTop - 120) current = sec.id;
+      });
+      setActive(current);
+    });
+
+    // ── GitHub repos ──────────────────────────────────────────────
+    const LANG_COLORS = {
+      C:          '#555555',
+      'C++':      '#f34b7d',
+      Python:     '#3572a5',
+      JavaScript: '#f1e05a',
+      TypeScript: '#2b7489',
+      HTML:       '#e34c26',
+      CSS:        '#563d7c',
+      Shell:      '#89e051',
+      Makefile:   '#427819',
+    };
+
+    async function loadRepos() {
+      const grid = document.getElementById('repos-grid');
+      try {
+        const res = await fetch(
+          'https://api.github.com/users/Diogo-Serra/repos?sort=updated&per_page=18&type=public'
+        );
+        if (!res.ok) throw new Error('API error');
+
+        const repos = await res.json();
+        const items = repos.filter(r => !r.fork).slice(0, 9);
+
+        if (!items.length) {
+          grid.innerHTML = '<p class="repos-status">No public repositories found.</p>';
+          return;
+        }
+
+        grid.innerHTML = items.map(repo => {
+          const langColor = LANG_COLORS[repo.language] || '#00bfff';
+          const desc = repo.description
+            ? repo.description.replace(/</g, '&lt;').replace(/>/g, '&gt;')
+            : 'No description.';
+
+          return `
+            <a href="${repo.html_url}" target="_blank" rel="noopener noreferrer" class="repo-card">
+              <div class="repo-top">
+                <span class="repo-name">
+                  <i class="fas fa-book-bookmark" aria-hidden="true"></i>
+                  ${repo.name}
+                </span>
+                <i class="fas fa-arrow-up-right-from-square repo-ext" aria-hidden="true"></i>
+              </div>
+              <p class="repo-desc">${desc}</p>
+              <div class="repo-meta">
+                ${repo.language ? `
+                  <span class="repo-lang">
+                    <span class="lang-dot" style="background:${langColor}"></span>
+                    ${repo.language}
+                  </span>` : ''}
+                ${repo.stargazers_count > 0 ? `
+                  <span class="repo-stat">
+                    <i class="fas fa-star" aria-hidden="true"></i> ${repo.stargazers_count}
+                  </span>` : ''}
+                ${repo.forks_count > 0 ? `
+                  <span class="repo-stat">
+                    <i class="fas fa-code-fork" aria-hidden="true"></i> ${repo.forks_count}
+                  </span>` : ''}
+              </div>
+            </a>
+          `;
+        }).join('');
+
+      } catch {
+        grid.innerHTML = `
+          <div class="repos-status repos-error">
+            <i class="fas fa-triangle-exclamation" aria-hidden="true"></i>
+            <span>Could not load repositories.
+              <a href="https://github.com/Diogo-Serra?tab=repositories"
+                 target="_blank" rel="noopener noreferrer">View on GitHub</a>
+            </span>
+          </div>`;
+      }
+    }
+
+    loadRepos();
+  </script>
+</body>
+</html>
