@@ -367,6 +367,12 @@ em {
 /* ══════════════════════════════════════════════════════════
    Banner Cat
 ══════════════════════════════════════════════════════════ */
+.banner-cat-link {
+  display: block;
+  width: 100%;
+  line-height: 0;
+}
+
 .banner-cat {
   display: block;
   width: 100%;
