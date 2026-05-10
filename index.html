@@ -126,6 +126,16 @@
             that are not only functional but <em>secure by design</em>. I love
             understanding how things work beneath the surface.
           </p>
+          <p>
+            After years of professional experience in management roles within
+            <strong>tech services outsourcing companies</strong>, I'm now making the transition
+            into the tech industry full-time - bringing with me a strong foundation
+            in people, processes, and the business side of technology.
+          </p>
+          <p>
+            Outside of code I'm a cat person, a longtime gamer - <em>Souls games</em>,
+            Path of Exile and some survival games <em>Magic: The Gathering</em> player since young age.
+          </p>
           <div class="highlight-grid">
             <div class="highlight-item">
               <i class="fas fa-microchip" aria-hidden="true"></i>
@@ -430,7 +440,8 @@
         if (!res.ok) throw new Error('API error');
 
         const repos = await res.json();
-        const items = repos.filter(r => !r.fork).slice(0, 9);
+        const HIDDEN = ['Diogo-Serra', 'Diogo-Serra.github.io'];
+        const items = repos.filter(r => !r.fork && !HIDDEN.includes(r.name)).slice(0, 10);
 
         if (!items.length) {
           grid.innerHTML = '<p class="repos-status">No public repositories found.</p>';
