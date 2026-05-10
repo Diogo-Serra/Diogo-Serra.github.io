@@ -242,6 +242,32 @@
         <h2 class="section-title">
           <span class="section-num">04.</span> GitHub Presence
         </h2>
+
+        <!-- Live metric cards -->
+        <div class="gh-metrics">
+          <div class="metric-card">
+            <i class="fas fa-book-bookmark" aria-hidden="true"></i>
+            <span class="metric-val" id="m-repos">&mdash;</span>
+            <span class="metric-label">Public Repos</span>
+          </div>
+          <div class="metric-card">
+            <i class="fas fa-users" aria-hidden="true"></i>
+            <span class="metric-val" id="m-followers">&mdash;</span>
+            <span class="metric-label">Followers</span>
+          </div>
+          <div class="metric-card">
+            <i class="fas fa-star" aria-hidden="true"></i>
+            <span class="metric-val" id="m-stars">&mdash;</span>
+            <span class="metric-label">Stars Earned</span>
+          </div>
+          <div class="metric-card">
+            <i class="fas fa-code-fork" aria-hidden="true"></i>
+            <span class="metric-val" id="m-forks">&mdash;</span>
+            <span class="metric-label">Forks</span>
+          </div>
+        </div>
+
+        <!-- Streak + Top Languages -->
         <div class="stats-grid">
           <div class="stat-card">
             <img
@@ -250,21 +276,65 @@
               loading="lazy"
             />
           </div>
-          <div class="stat-card">
-            <img
-              src="https://github-readme-stats.vercel.app/api/top-langs/?username=diogo-serra&layout=compact&theme=nord&hide_border=true&bg_color=0c1424&title_color=00bfff&text_color=e2e8f0&langs_count=8&cache_seconds=1800&count_private=true"
-              alt="Top Languages"
-              loading="lazy"
-            />
+          <div class="stat-card lang-card">
+            <p class="lang-card-title">
+              <i class="fas fa-chart-bar" aria-hidden="true"></i>
+              Top Languages
+            </p>
+            <div class="lang-list">
+              <div class="lang-item">
+                <div class="lang-icon">
+                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/c/c-original.svg" alt="C" />
+                </div>
+                <div class="lang-bar-wrap">
+                  <div class="lang-bar-top">
+                    <span class="lang-name">C</span>
+                    <span class="lang-pct">62%</span>
+                  </div>
+                  <div class="lang-track"><div class="lang-fill" style="--w:62%; --c:#6599c8"></div></div>
+                </div>
+              </div>
+              <div class="lang-item">
+                <div class="lang-icon">
+                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" alt="Python" />
+                </div>
+                <div class="lang-bar-wrap">
+                  <div class="lang-bar-top">
+                    <span class="lang-name">Python</span>
+                    <span class="lang-pct">21%</span>
+                  </div>
+                  <div class="lang-track"><div class="lang-fill" style="--w:21%; --c:#3572a5"></div></div>
+                </div>
+              </div>
+              <div class="lang-item">
+                <div class="lang-icon">
+                  <i class="fas fa-terminal" style="color:#89e051" aria-hidden="true"></i>
+                </div>
+                <div class="lang-bar-wrap">
+                  <div class="lang-bar-top">
+                    <span class="lang-name">Shell</span>
+                    <span class="lang-pct">11%</span>
+                  </div>
+                  <div class="lang-track"><div class="lang-fill" style="--w:11%; --c:#89e051"></div></div>
+                </div>
+              </div>
+              <div class="lang-item">
+                <div class="lang-icon">
+                  <i class="fab fa-js" style="color:#f1e05a" aria-hidden="true"></i>
+                </div>
+                <div class="lang-bar-wrap">
+                  <div class="lang-bar-top">
+                    <span class="lang-name">JavaScript</span>
+                    <span class="lang-pct">6%</span>
+                  </div>
+                  <div class="lang-track"><div class="lang-fill" style="--w:6%; --c:#f1e05a"></div></div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="stat-card stat-card--full">
-          <img
-            src="https://github-readme-stats.vercel.app/api?username=diogo-serra&show_icons=true&theme=nord&hide_border=true&bg_color=0c1424&title_color=00bfff&icon_color=1e6fff&text_color=e2e8f0"
-            alt="GitHub Stats"
-            loading="lazy"
-          />
-        </div>
+
+        <!-- Activity Graph -->
         <div class="stat-card stat-card--full stat-card--graph">
           <img
             src="https://github-readme-activity-graph.vercel.app/graph?username=diogo-serra&bg_color=0c1424&color=00bfff&line=1e6fff&point=00bfff&area=true&area_color=1e6fff&hide_border=true"
@@ -397,6 +467,49 @@
     }
 
     loadRepos();
+
+    // ── GitHub stats metrics ──────────────────────────────────────
+    async function loadGithubStats() {
+      try {
+        const [userRes, reposRes] = await Promise.all([
+          fetch('https://api.github.com/users/Diogo-Serra'),
+          fetch('https://api.github.com/users/Diogo-Serra/repos?per_page=100&type=public'),
+        ]);
+        if (!userRes.ok || !reposRes.ok) return;
+
+        const user  = await userRes.json();
+        const repos = await reposRes.json();
+
+        const stars = repos.reduce((s, r) => s + (r.stargazers_count || 0), 0);
+        const forks = repos.reduce((s, r) => s + (r.forks_count      || 0), 0);
+
+        const targets = {
+          'm-repos':     user.public_repos ?? repos.length,
+          'm-followers': user.followers    ?? 0,
+          'm-stars':     stars,
+          'm-forks':     forks,
+        };
+
+        Object.entries(targets).forEach(([id, target]) => {
+          const el = document.getElementById(id);
+          if (!el) return;
+          let startTs = null;
+          const duration = 900;
+          const step = ts => {
+            if (!startTs) startTs = ts;
+            const p = Math.min((ts - startTs) / duration, 1);
+            el.textContent = Math.round(p * target);
+            if (p < 1) requestAnimationFrame(step);
+            else el.textContent = target;
+          };
+          requestAnimationFrame(step);
+        });
+      } catch {
+        // fail silently — values stay as dashes
+      }
+    }
+
+    loadGithubStats();
   </script>
 </body>
 </html>

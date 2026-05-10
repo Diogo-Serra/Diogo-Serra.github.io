@@ -127,8 +127,8 @@ em {
 }
 
 .avatar-ring {
-  width: 116px;
-  height: 116px;
+  width: 154px;
+  height: 154px;
   border-radius: 50%;
   padding: 3px;
   background: linear-gradient(135deg, var(--blue), var(--blue-2));
@@ -700,6 +700,144 @@ em {
 }
 
 /* ══════════════════════════════════════════════════════════
+   GitHub Metrics
+══════════════════════════════════════════════════════════ */
+.gh-metrics {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  margin-bottom: 24px;
+}
+
+.metric-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 22px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  text-align: center;
+  transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+}
+
+.metric-card:hover {
+  border-color: var(--border-hover);
+  box-shadow: 0 0 22px var(--blue-glow);
+  transform: translateY(-2px);
+}
+
+.metric-card > i {
+  font-size: 1.05rem;
+  color: var(--blue);
+  opacity: 0.8;
+}
+
+.metric-val {
+  font-size: 2rem;
+  font-weight: 700;
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--text);
+  line-height: 1;
+}
+
+.metric-label {
+  font-size: 0.68rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+}
+
+/* ── Language Card ──────────────────────────── */
+.lang-card {
+  overflow: visible;
+  padding: 22px 24px;
+}
+
+.lang-card-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--blue);
+  margin-bottom: 20px;
+}
+
+.lang-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.lang-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.lang-icon {
+  width: 26px;
+  height: 26px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lang-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.lang-icon i { font-size: 1.1rem; }
+
+.lang-bar-wrap { flex: 1; }
+
+.lang-bar-top {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+
+.lang-name {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--text-dim);
+}
+
+.lang-pct {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.73rem;
+  color: var(--text-muted);
+}
+
+.lang-track {
+  width: 100%;
+  height: 5px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.lang-fill {
+  height: 100%;
+  border-radius: 3px;
+  width: 0;
+  background: var(--c, var(--blue));
+  animation: fill-bar 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation-delay: 0.4s;
+}
+
+@keyframes fill-bar {
+  to { width: var(--w, 0%); }
+}
+
+/* ══════════════════════════════════════════════════════════
    Footer
 ══════════════════════════════════════════════════════════ */
 .page-footer {
@@ -751,4 +889,5 @@ em {
   .stats-grid        { grid-template-columns: 1fr; }
   .highlight-grid    { grid-template-columns: 1fr; }
   .repos-grid        { grid-template-columns: 1fr; }
+  .gh-metrics        { grid-template-columns: repeat(2, 1fr); }
 }
