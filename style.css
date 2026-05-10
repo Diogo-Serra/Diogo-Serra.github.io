@@ -497,6 +497,37 @@ em {
   color: var(--text);
 }
 
+/* ── Skills Ticker ─────────────────────────────────────── */
+.skills-ticker {
+  margin-top: 22px;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, black 8%, black 92%, transparent 100%);
+  mask-image: linear-gradient(90deg, transparent 0%, black 8%, black 92%, transparent 100%);
+}
+
+.ticker-track {
+  display: flex;
+  gap: 8px;
+  width: max-content;
+  animation: ticker-scroll 28s linear infinite;
+}
+
+.ticker-track:hover {
+  animation-play-state: paused;
+}
+
+.ticker-sep {
+  background: transparent !important;
+  border-color: transparent !important;
+  color: var(--text-muted) !important;
+  padding: 3px 4px;
+}
+
+@keyframes ticker-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
 /* ══════════════════════════════════════════════════════════
    Timeline (Experience)
 ══════════════════════════════════════════════════════════ */
