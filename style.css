@@ -367,17 +367,51 @@ em {
 /* ══════════════════════════════════════════════════════════
    Banner Cat
 ══════════════════════════════════════════════════════════ */
-.banner-cat-link {
-  display: block;
+.top-banner {
+  display: flex;
+  align-items: center;
+  gap: 14px;
   width: 100%;
-  line-height: 0;
+  padding: 22px 52px;
+  border-bottom: 1px solid var(--border);
+  background: linear-gradient(90deg, var(--bg-card) 0%, rgba(0,191,255,0.04) 100%);
+  letter-spacing: 0.01em;
 }
 
-.banner-cat {
-  display: block;
-  width: 100%;
-  height: auto;
-  border-bottom: 1px solid var(--border);
+.top-banner-name {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--blue);
+  white-space: nowrap;
+}
+
+.top-banner-sep {
+  color: var(--text-muted);
+  font-size: 1.1rem;
+  font-weight: 300;
+}
+
+.top-banner-role {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text);
+  white-space: nowrap;
+}
+
+.top-banner-tag {
+  margin-left: auto;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--blue);
+  background: var(--blue-dim);
+  border: 1px solid rgba(0,191,255,0.18);
+  border-radius: 20px;
+  padding: 3px 12px;
+  white-space: nowrap;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
 }
 
 /* ══════════════════════════════════════════════════════════
