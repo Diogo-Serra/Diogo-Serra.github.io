@@ -951,6 +951,93 @@ em {
 }
 
 /* ══════════════════════════════════════════════════════════
+   GitHub Presence (rebuilt)
+══════════════════════════════════════════════════════════ */
+
+/* Pill row */
+.gh-pills {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.gh-pill {
+  flex: 1;
+  min-width: 100px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.gh-pill:hover {
+  border-color: var(--border-hover);
+  box-shadow: 0 0 16px var(--blue-glow);
+}
+
+.gh-pill > i {
+  font-size: 0.85rem;
+  color: var(--blue);
+  width: 14px;
+  text-align: center;
+  opacity: 0.85;
+  flex-shrink: 0;
+}
+
+.gh-pill-val {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1;
+}
+
+.gh-pill-lbl {
+  font-size: 0.68rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-left: 1px;
+}
+
+/* Two-column row */
+.gh-two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+/* Block wrapper */
+.gh-block {}
+
+.gh-block--full {
+  width: 100%;
+}
+
+.gh-block-title {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+}
+
+.gh-block-title i {
+  color: var(--blue);
+  font-size: 0.75rem;
+}
+
+/* ══════════════════════════════════════════════════════════
    Footer
 ══════════════════════════════════════════════════════════ */
 .page-footer {
@@ -1003,4 +1090,6 @@ em {
   .highlight-grid    { grid-template-columns: 1fr; }
   .repos-grid        { grid-template-columns: 1fr; }
   .gh-metrics        { grid-template-columns: repeat(2, 1fr); }
+  .gh-two-col        { grid-template-columns: 1fr; }
+  .gh-pills          { gap: 8px; }
 }

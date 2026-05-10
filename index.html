@@ -33,25 +33,12 @@
           </div>
           <h1 class="profile-name">Diogo Serra</h1>
           <p class="profile-title">Software Developer</p>
-          <p class="profile-subtitle">Systems &middot; Cybersecurity</p>
+          <p class="profile-subtitle">Systems &middot; System Administration</p>
           <div class="status-badge">
             <span class="status-dot"></span>
             <span>42 School &mdash; Active</span>
           </div>
         </div>
-
-        <!-- Nav -->
-        <nav class="sidebar-nav" aria-label="Page sections">
-          <a href="#about"      class="nav-link active" data-target="about">
-            <i class="fas fa-user" aria-hidden="true"></i> About
-          </a>
-          <a href="#experience" class="nav-link" data-target="experience">
-            <i class="fas fa-briefcase" aria-hidden="true"></i> Experience
-          </a>
-          <a href="#projects"   class="nav-link" data-target="projects">
-            <i class="fas fa-code" aria-hidden="true"></i> Projects
-          </a>
-        </nav>
 
         <!-- Skills -->
         <div class="skills-block">
@@ -137,10 +124,9 @@
         <div class="card">
           <p>
             I'm a <strong>software developer</strong> specializing in
-            <strong>systems programming</strong> and <strong>cybersecurity</strong>.
-            Currently honing my craft at <strong>42 School</strong>, where I tackle
-            challenging projects from the ground up, no hand-holding, no shortcuts,
-            just real engineering under pressure.
+            <strong>systems programming</strong> and <strong>systems administration</strong>.
+            Currently studying at <strong>42 School</strong>, where I tackle
+            challenging projects from the ground up, in a peer-to-peer learning environment.
           </p>
           <p>
             Passionate about low-level coding, automation, and building systems
@@ -154,7 +140,7 @@
             </div>
             <div class="highlight-item">
               <i class="fas fa-shield-halved" aria-hidden="true"></i>
-              <span>Cybersecurity</span>
+              <span>CSystem Administration</span>
             </div>
             <div class="highlight-item">
               <i class="fas fa-terminal" aria-hidden="true"></i>
@@ -208,6 +194,68 @@
             </div>
           </div>
 
+          <div class="card timeline-card">
+            <div class="tl-row">
+              <div class="tl-icon">
+                <i class="fas fa-water" aria-hidden="true"></i>
+              </div>
+              <div class="tl-body">
+                <div class="tl-header">
+                  <div>
+                    <h3 class="job-title">La Piscine</h3>
+                    <p class="company">42 School &mdash; Admission</p>
+                  </div>
+                  <span class="tl-date">
+                    <i class="fas fa-check" style="color:var(--green)"></i> Passed
+                  </span>
+                </div>
+                <p>
+                  Four weeks of survival-mode coding. No teachers, no tutorials - just
+                  daily exercises, group projects and exams in C, all peer-evaluated.
+                  One of the hardest admission processes in tech education, and the
+                  moment I knew this was exactly where I wanted to be.
+                </p>
+                <div class="tags">
+                  <span class="tag accent">C</span>
+                  <span class="tag accent">Shell</span>
+                  <span class="tag accent">Peer Review</span>
+                  <span class="tag accent">Problem Solving</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card timeline-card">
+            <div class="tl-row">
+              <div class="tl-icon">
+                <i class="fas fa-rotate" aria-hidden="true"></i>
+              </div>
+              <div class="tl-body">
+                <div class="tl-header">
+                  <div>
+                    <h3 class="job-title">Piscina Reloaded</h3>
+                    <p class="company">42 School &mdash; Refresher</p>
+                  </div>
+                  <span class="tl-date">
+                    <i class="fas fa-check" style="color:var(--green)"></i> Passed
+                  </span>
+                </div>
+                <p>
+                  A second dive - same intensity, sharper focus. The Reloaded edition
+                  revisits the Piscine fundamentals with harder challenges, reinforcing
+                  the core C skills and the mindset that carries you through the
+                  rest of the 42 cursus.
+                </p>
+                <div class="tags">
+                  <span class="tag accent">C</span>
+                  <span class="tag accent">Algorithms</span>
+                  <span class="tag accent">Memory</span>
+                  <span class="tag accent">Unix</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
         </div>
       </section>
 
@@ -232,6 +280,93 @@
             View all repositories <i class="fas fa-arrow-right" aria-hidden="true"></i>
           </a>
         </div>
+      </section>
+
+      <!-- GitHub Presence -->
+      <section id="github" class="section">
+        <h2 class="section-title">
+          <span class="section-num">04.</span> GitHub Presence
+        </h2>
+
+        <!-- Metric pills -->
+        <div class="gh-pills">
+          <div class="gh-pill">
+            <i class="fas fa-book-bookmark" aria-hidden="true"></i>
+            <span class="gh-pill-val" id="m-repos">&mdash;</span>
+            <span class="gh-pill-lbl">Repos</span>
+          </div>
+          <div class="gh-pill">
+            <i class="fas fa-users" aria-hidden="true"></i>
+            <span class="gh-pill-val" id="m-followers">&mdash;</span>
+            <span class="gh-pill-lbl">Followers</span>
+          </div>
+          <div class="gh-pill">
+            <i class="fas fa-star" aria-hidden="true"></i>
+            <span class="gh-pill-val" id="m-stars">&mdash;</span>
+            <span class="gh-pill-lbl">Stars</span>
+          </div>
+          <div class="gh-pill">
+            <i class="fas fa-code-fork" aria-hidden="true"></i>
+            <span class="gh-pill-val" id="m-forks">&mdash;</span>
+            <span class="gh-pill-lbl">Forks</span>
+          </div>
+        </div>
+
+        <!-- Two columns: streak | heatmap -->
+        <div class="gh-two-col">
+
+          <div class="gh-block">
+            <p class="gh-block-title">
+              <i class="fas fa-fire" aria-hidden="true"></i> Current Streak
+            </p>
+            <div class="stat-card">
+              <img
+                src="https://streak-stats.vercel.app/?user=diogo-serra&theme=nord&hide_border=true&background=0c1424&ring=00bfff&fire=1e6fff&currStreakLabel=00bfff&currStreakNum=e2e8f0&sideLabels=64748b&dates=475569"
+                alt="GitHub Streak"
+                loading="lazy"
+              />
+            </div>
+          </div>
+
+          <div class="gh-block">
+            <p class="gh-block-title">
+              <i class="fas fa-calendar-days" aria-hidden="true"></i> Daily Contributions
+            </p>
+            <div class="stat-card contrib-card">
+              <div id="contrib-calendar" class="contrib-calendar">
+                <div class="contrib-loading">
+                  <i class="fas fa-circle-notch fa-spin" aria-hidden="true"></i>
+                  <span>Loading&hellip;</span>
+                </div>
+              </div>
+              <div class="contrib-legend">
+                <span class="legend-label">Less</span>
+                <span class="legend-cell" data-level="0"></span>
+                <span class="legend-cell" data-level="1"></span>
+                <span class="legend-cell" data-level="2"></span>
+                <span class="legend-cell" data-level="3"></span>
+                <span class="legend-cell" data-level="4"></span>
+                <span class="legend-label">More</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Activity graph -->
+        <div class="gh-block gh-block--full">
+          <p class="gh-block-title">
+            <i class="fas fa-chart-line" aria-hidden="true"></i> Activity
+          </p>
+          <div class="stat-card">
+            <img
+              src="https://github-readme-activity-graph.vercel.app/graph?username=diogo-serra&bg_color=0c1424&color=00bfff&line=1e6fff&point=00bfff&area=true&area_color=1e6fff&hide_border=true"
+              alt="GitHub Activity Graph"
+              loading="lazy"
+            />
+          </div>
+        </div>
+
       </section>
 
       <footer class="page-footer">
@@ -357,6 +492,100 @@
     }
 
     loadRepos();
+
+    // ── GitHub presence metrics ───────────────────────────────────
+    async function loadGithubStats() {
+      try {
+        const [userRes, reposRes] = await Promise.all([
+          fetch('https://api.github.com/users/Diogo-Serra'),
+          fetch('https://api.github.com/users/Diogo-Serra/repos?per_page=100&type=public'),
+        ]);
+        if (!userRes.ok || !reposRes.ok) return;
+        const user  = await userRes.json();
+        const repos = await reposRes.json();
+        const stars = repos.reduce((s, r) => s + (r.stargazers_count || 0), 0);
+        const forks = repos.reduce((s, r) => s + (r.forks_count      || 0), 0);
+        const vals = {
+          'm-repos':     user.public_repos ?? repos.length,
+          'm-followers': user.followers    ?? 0,
+          'm-stars':     stars,
+          'm-forks':     forks,
+        };
+        Object.entries(vals).forEach(([id, target]) => {
+          const el = document.getElementById(id);
+          if (!el) return;
+          let t0 = null;
+          const dur = 800;
+          const tick = ts => {
+            if (!t0) t0 = ts;
+            const p = Math.min((ts - t0) / dur, 1);
+            el.textContent = Math.round(p * target);
+            if (p < 1) requestAnimationFrame(tick);
+          };
+          requestAnimationFrame(tick);
+        });
+      } catch { /* silent */ }
+    }
+    loadGithubStats();
+
+    // ── Contribution heatmap ──────────────────────────────────────
+    async function loadContributions() {
+      const container = document.getElementById('contrib-calendar');
+      if (!container) return;
+      try {
+        const res = await fetch('https://github-contributions-api.jogruber.de/v4/diogo-serra?y=last');
+        if (!res.ok) throw new Error();
+        const data = await res.json();
+        const dayMap = {};
+        data.contributions.forEach(d => { dayMap[d.date] = d; });
+
+        const today = new Date();
+        today.setHours(0,0,0,0);
+        const end = new Date(today);
+        end.setDate(today.getDate() + (6 - today.getDay()));
+        const start = new Date(end);
+        start.setDate(end.getDate() - 52 * 7 + 1);
+
+        const weeks = [];
+        let cur = new Date(start);
+        for (let w = 0; w < 52; w++) {
+          const week = [];
+          for (let d = 0; d < 7; d++) {
+            const ds = cur.toISOString().split('T')[0];
+            const c  = dayMap[ds];
+            week.push({ date: ds, level: c ? c.level : 0, count: c ? c.count : 0 });
+            cur.setDate(cur.getDate() + 1);
+          }
+          weeks.push(week);
+        }
+
+        const MO = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+        let lastM = -1;
+        let mHtml = '<div class="contrib-months">';
+        weeks.forEach(wk => {
+          const m = new Date(wk[0].date).getMonth();
+          mHtml += `<span class="contrib-month-lbl">${m !== lastM ? MO[m] : ''}</span>`;
+          lastM = m;
+        });
+        mHtml += '</div>';
+
+        let wHtml = '<div class="contrib-weeks">';
+        weeks.forEach(wk => {
+          wHtml += '<div class="contrib-week">';
+          wk.forEach(day => {
+            const lbl = `${day.date}: ${day.count} contribution${day.count !== 1 ? 's' : ''}`;
+            wHtml += `<div class="contrib-day" data-level="${day.level}" title="${lbl}"></div>`;
+          });
+          wHtml += '</div>';
+        });
+        wHtml += '</div>';
+
+        container.innerHTML = mHtml + wHtml;
+      } catch {
+        container.innerHTML = '<p style="padding:16px;color:var(--text-muted);font-size:.8rem;text-align:center">Could not load contributions.</p>';
+      }
+    }
+    loadContributions();
 
   </script>
 </body>
