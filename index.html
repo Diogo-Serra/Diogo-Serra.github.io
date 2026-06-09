@@ -3,711 +3,746 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Diogo Serra — Software Developer specializing in systems programming and cybersecurity." />
+  <meta name="description" content="Diogo Serra — Software Developer specializing in systems programming, Linux and open source." />
   <title>Diogo Serra — Software Developer</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-  <!-- Ambient background orbs -->
+  <!-- Custom cursor glow -->
+  <div class="cursor-glow" id="cursor-glow" aria-hidden="true"></div>
+
+  <!-- Scroll progress -->
+  <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
+
+  <!-- Ambient orbs -->
   <div class="ambient" aria-hidden="true">
     <div class="orb orb-1"></div>
     <div class="orb orb-2"></div>
     <div class="orb orb-3"></div>
   </div>
 
-  <div class="layout">
+  <!-- ══════════════════════════════════
+       NAVBAR
+  ══════════════════════════════════ -->
+  <nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
+    <a href="#hero" class="nav-brand" aria-label="Home">
+      <span class="brand-bracket">&lt;</span>DS<span class="brand-bracket">/&gt;</span>
+    </a>
 
-    <!-- ══════════════════════════════════
-         SIDEBAR
-    ══════════════════════════════════ -->
-    <aside class="sidebar">
-      <div class="sidebar-inner">
+    <div class="nav-links">
+      <a href="#about"      class="nav-link" data-target="about">about</a>
+      <a href="#skills"     class="nav-link" data-target="skills">skills</a>
+      <a href="#experience" class="nav-link" data-target="experience">experience</a>
+      <a href="#projects"   class="nav-link" data-target="projects">projects</a>
+      <a href="#github"     class="nav-link" data-target="github">github</a>
+    </div>
 
-        <!-- Profile -->
-        <div class="profile-block">
-          <div class="avatar-ring">
-            <img src="public/photo.jpeg" alt="Diogo Serra" class="avatar" />
-          </div>
-          <h1 class="profile-name">Diogo Serra</h1>
-          <p class="profile-title">Software Developer</p>
-          <p class="profile-subtitle">Sysadmin &middot; DevOps &middot; Open Source</p>
-          <div class="status-badge">
-            <span class="status-dot"></span>
-            Open to opportunities
-          </div>
-        </div>
+    <div class="nav-right">
+      <span class="nav-status">
+        <span class="status-dot"></span>
+        Open to work
+      </span>
+      <a href="https://github.com/Diogo-Serra" target="_blank" rel="noopener noreferrer" class="nav-gh" aria-label="GitHub profile">
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
 
-        <!-- Navigation -->
-        <nav class="sidebar-nav" aria-label="Page navigation">
-          <a href="#about" class="nav-link" data-target="about">
-            <i class="fas fa-user" aria-hidden="true"></i>
-            <span>About</span>
-          </a>
-          <a href="#experience" class="nav-link" data-target="experience">
-            <i class="fas fa-briefcase" aria-hidden="true"></i>
-            <span>Experience</span>
-          </a>
-          <a href="#projects" class="nav-link" data-target="projects">
-            <i class="fas fa-code" aria-hidden="true"></i>
-            <span>Projects</span>
-          </a>
-          <a href="#github" class="nav-link" data-target="github">
-            <i class="fab fa-github" aria-hidden="true"></i>
-            <span>GitHub</span>
-          </a>
-        </nav>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
 
-        <!-- Skills -->
-        <div class="skills-block">
-          <div class="skill-group">
-            <p class="skill-group-label">Languages</p>
-            <div class="tags">
-              <span class="tag">C</span>
-              <span class="tag">Python</span>
-              <span class="tag">Bash</span>
-              <span class="tag">HTML</span>
-              <span class="tag">CSS</span>
-              <span class="tag">Visual Basic</span>
-              <span class="tag">Markdown</span>
-            </div>
-          </div>
-
-          <div class="skill-group">
-            <p class="skill-group-label">Tools &amp; Technologies</p>
-            <div class="tags">
-              <span class="tag">Nginx</span>
-              <span class="tag">Git</span>
-              <span class="tag">CMake</span>
-              <span class="tag">Vim</span>
-              <span class="tag">VS Code</span>
-              <span class="tag">Docker</span>
-            </div>
-          </div>
-
-          <div class="skill-group">
-            <p class="skill-group-label">Databases</p>
-            <div class="tags">
-              <span class="tag">MySQL</span>
-              <span class="tag">MongoDB</span>
-            </div>
-          </div>
-
-          <div class="skill-group">
-            <p class="skill-group-label">Operating Systems</p>
-            <div class="tags">
-              <span class="tag">Linux</span>
-              <span class="tag">macOS</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Social -->
-        <div class="social-block">
-          <a href="https://github.com/Diogo-Serra" target="_blank" rel="noopener noreferrer" class="social-link">
-            <i class="fab fa-github" aria-hidden="true"></i>
-            <span>GitHub</span>
-            <i class="fas fa-arrow-up-right-from-square ext-icon" aria-hidden="true"></i>
-          </a>
-          <a href="https://www.linkedin.com/in/diogoserra90/" target="_blank" rel="noopener noreferrer" class="social-link">
-            <i class="fab fa-linkedin-in" aria-hidden="true"></i>
-            <span>LinkedIn</span>
-            <i class="fas fa-arrow-up-right-from-square ext-icon" aria-hidden="true"></i>
-          </a>
-        </div>
-
-        <!-- Quote -->
-        <blockquote class="sidebar-quote">
-          &ldquo;You must gather your party before venturing forth&rdquo;
-        </blockquote>
-
-      </div>
-    </aside>
-
-    <!-- ══════════════════════════════════
-         MAIN CONTENT
-    ══════════════════════════════════ -->
-    <main class="content" id="content-panel">
-
-      <!-- Top Banner -->
-      <div class="top-banner" id="top-banner">
-        <span class="top-banner-name">Diogo Serra</span>
-        <span class="top-banner-sep">·</span>
-        <span class="top-banner-role">Software Developer</span>
-        <nav class="top-banner-nav">
-          <a href="#about" class="banner-nav-link" data-target="about">about</a>
-          <a href="#experience" class="banner-nav-link" data-target="experience">experience</a>
-          <a href="#projects" class="banner-nav-link" data-target="projects">projects</a>
-          <a href="#github" class="banner-nav-link" data-target="github">github</a>
-        </nav>
-      </div>
-
-      <div class="content-scroll">
-
-        <!-- About -->
-        <section id="about" class="section">
-          <h2 class="section-title">
-            <span class="section-num">01.</span> About
-          </h2>
-          <div class="card">
-            <p>
-              I'm a <strong>software developer</strong> specializing in
-              <strong>systems programming</strong> and <strong>systems administration</strong>.
-              Currently studying at <strong>42 School</strong>, where I tackle
-              challenging projects from the ground up, in a peer-to-peer learning environment.
-            </p>
-            <p>
-              Passionate about low-level coding, automation, and building systems
-              that are not only functional but <em>secure by design</em>. I love
-              understanding how things work beneath the surface.
-            </p>
-            <p>
-              After years of professional experience in management roles within
-              <strong>tech services outsourcing companies</strong>, I'm now making the transition
-              into the tech industry full-time - bringing with me a strong foundation
-              in people, processes, and the business side of technology.
-            </p>
-            <p>
-              Outside of code I'm a cat person, a longtime gamer - <em>Souls games</em>, <em>Baldur's Gate</em>,
-              <em>Path of Exile</em> and some survival games, <em>Magic: The Gathering</em> player since young age.
-            </p>
-            <div class="highlight-grid">
-              <div class="highlight-item">
-                <i class="fas fa-microchip" aria-hidden="true"></i>
-                <span>Systems Programming</span>
-              </div>
-              <div class="highlight-item">
-                <i class="fas fa-shield-halved" aria-hidden="true"></i>
-                <span>System Administration</span>
-              </div>
-              <div class="highlight-item">
-                <i class="fas fa-terminal" aria-hidden="true"></i>
-                <span>Linux &amp; Unix</span>
-              </div>
-              <div class="highlight-item">
-                <i class="fas fa-brain" aria-hidden="true"></i>
-                <span>Machine Learning</span>
-              </div>
-              <div class="highlight-item">
-                <i class="fab fa-osi" aria-hidden="true"></i>
-                <span>Open Source</span>
-              </div>
-              <div class="highlight-item">
-                <i class="fas fa-infinity" aria-hidden="true"></i>
-                <span>DevOps</span>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- Experience -->
-        <section id="experience" class="section">
-          <h2 class="section-title">
-            <span class="section-num">02.</span> Experience
-          </h2>
-          <div class="timeline">
-
-            <div class="timeline-item">
-              <div class="tl-connector">
-                <div class="tl-icon">
-                  <i class="fas fa-graduation-cap" aria-hidden="true"></i>
-                </div>
-                <div class="tl-line"></div>
-              </div>
-              <div class="card tl-card">
-                <div class="tl-header">
-                  <div>
-                    <h3 class="job-title">Software Engineering Student</h3>
-                    <p class="company">42 School</p>
-                  </div>
-                  <span class="tl-date">
-                    <span class="tl-dot"></span> Current
-                  </span>
-                </div>
-                <p>
-                  Intensive peer-to-peer learning environment with zero lectures -
-                  pure project-based engineering. Building everything from scratch:
-                  Unix shells, memory allocators, network daemons, 3D ray-casters,
-                  and more.
-                </p>
-                <div class="tags">
-                  <span class="tag accent">C</span>
-                  <span class="tag accent">Linux</span>
-                  <span class="tag accent">Unix</span>
-                  <span class="tag accent">Algorithms</span>
-                  <span class="tag accent">Networks</span>
-                  <span class="tag accent">Security</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="timeline-item">
-              <div class="tl-connector">
-                <div class="tl-icon">
-                  <i class="fas fa-water" aria-hidden="true"></i>
-                </div>
-                <div class="tl-line"></div>
-              </div>
-              <div class="card tl-card">
-                <div class="tl-header">
-                  <div>
-                    <h3 class="job-title">La Piscine</h3>
-                    <p class="company">42 School &mdash; Admission</p>
-                  </div>
-                  <span class="tl-date">
-                    <i class="fas fa-check" style="color:var(--green)"></i> Passed
-                  </span>
-                </div>
-                <p>
-                  Four weeks of survival-mode coding. No teachers, no tutorials - just
-                  daily exercises, group projects and exams in C, all peer-evaluated.
-                  One of the hardest admission processes in tech education, and the
-                  moment I knew this was exactly where I wanted to be.
-                </p>
-                <div class="tags">
-                  <span class="tag accent">C</span>
-                  <span class="tag accent">Shell</span>
-                  <span class="tag accent">Peer Review</span>
-                  <span class="tag accent">Problem Solving</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="timeline-item">
-              <div class="tl-connector">
-                <div class="tl-icon">
-                  <i class="fas fa-rotate" aria-hidden="true"></i>
-                </div>
-                <div class="tl-line"></div>
-              </div>
-              <div class="card tl-card">
-                <div class="tl-header">
-                  <div>
-                    <h3 class="job-title">Piscina Reloaded</h3>
-                    <p class="company">42 School &mdash; Refresher</p>
-                  </div>
-                  <span class="tl-date">
-                    <i class="fas fa-check" style="color:var(--green)"></i> Passed
-                  </span>
-                </div>
-                <p>
-                  A second dive - same intensity, sharper focus. The Reloaded edition
-                  revisits the Piscine fundamentals with harder challenges, reinforcing
-                  the core C skills and the mindset that carries you through the
-                  rest of the 42 cursus.
-                </p>
-                <div class="tags">
-                  <span class="tag accent">C</span>
-                  <span class="tag accent">Algorithms</span>
-                  <span class="tag accent">Memory</span>
-                  <span class="tag accent">Unix</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="timeline-item">
-              <div class="tl-connector">
-                <div class="tl-icon">
-                  <i class="fas fa-briefcase" aria-hidden="true"></i>
-                </div>
-              </div>
-              <div class="card tl-card">
-                <div class="tl-header">
-                  <div>
-                    <h3 class="job-title">Operations &amp; Service Delivery Manager</h3>
-                    <p class="company">Tech Services Outsourcing — Enterprise Clients</p>
-                  </div>
-                  <span class="tl-date">
-                    <i class="fas fa-check" style="color:var(--green)"></i> Previous
-                  </span>
-                </div>
-                <p>
-                  Led service delivery and operations teams across large-scale outsourcing
-                  engagements for enterprise clients in finance, telecom and retail.
-                  Responsible for SLA governance, cross-functional team management,
-                  process optimisation and stakeholder communication at C-level.
-                </p>
-                <div class="tags">
-                  <span class="tag accent">Leadership</span>
-                  <span class="tag accent">Outsourcing</span>
-                  <span class="tag accent">Operations</span>
-                  <span class="tag accent">Team Leadership</span>
-                  <span class="tag accent">Client Management</span>
-                  <span class="tag accent">SLA &amp; KPI Governance</span>
-                  <span class="tag accent">Process Optimisation</span>
-                </div>
-              </div>
-            </div>
-
-          </div>
-        </section>
-
-        <!-- Projects -->
-        <section id="projects" class="section">
-          <h2 class="section-title">
-            <span class="section-num">03.</span> Projects
-          </h2>
-          <div id="repos-grid" class="repos-grid">
-            <div class="repos-status">
-              <i class="fas fa-circle-notch fa-spin" aria-hidden="true"></i>
-              <span>Loading repositories&hellip;</span>
-            </div>
-          </div>
-          <div class="section-cta">
-            <a
-              href="https://github.com/Diogo-Serra?tab=repositories"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="btn-outline"
-            >
-              View all repositories <i class="fas fa-arrow-right" aria-hidden="true"></i>
-            </a>
-          </div>
-        </section>
-
-        <!-- GitHub Presence -->
-        <section id="github" class="section">
-          <h2 class="section-title">
-            <span class="section-num">04.</span> GitHub Presence
-          </h2>
-
-          <!-- Metric pills -->
-          <div class="gh-pills">
-            <div class="gh-pill">
-              <i class="fas fa-book-bookmark" aria-hidden="true"></i>
-              <div class="gh-pill-content">
-                <span class="gh-pill-val" id="m-repos">&mdash;</span>
-                <span class="gh-pill-lbl">Repos</span>
-              </div>
-            </div>
-            <div class="gh-pill">
-              <i class="fas fa-users" aria-hidden="true"></i>
-              <div class="gh-pill-content">
-                <span class="gh-pill-val" id="m-followers">&mdash;</span>
-                <span class="gh-pill-lbl">Followers</span>
-              </div>
-            </div>
-            <div class="gh-pill">
-              <i class="fas fa-star" aria-hidden="true"></i>
-              <div class="gh-pill-content">
-                <span class="gh-pill-val" id="m-stars">&mdash;</span>
-                <span class="gh-pill-lbl">Stars</span>
-              </div>
-            </div>
-            <div class="gh-pill">
-              <i class="fas fa-code-fork" aria-hidden="true"></i>
-              <div class="gh-pill-content">
-                <span class="gh-pill-val" id="m-forks">&mdash;</span>
-                <span class="gh-pill-lbl">Forks</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Two columns: streak | heatmap -->
-          <div class="gh-two-col">
-
-            <div class="gh-block">
-              <p class="gh-block-title">
-                <i class="fas fa-fire" aria-hidden="true"></i> Current Streak
-              </p>
-              <div class="stat-card">
-                <img
-                  src="https://streak-stats.vercel.app/?user=diogo-serra&theme=nord&hide_border=true&background=0c1424&ring=00bfff&fire=1e6fff&currStreakLabel=00bfff&currStreakNum=e2e8f0&sideLabels=64748b&dates=475569"
-                  alt="GitHub Streak"
-                  loading="lazy"
-                />
-              </div>
-            </div>
-
-            <div class="gh-block">
-              <p class="gh-block-title">
-                <i class="fas fa-calendar-days" aria-hidden="true"></i> Daily Contributions
-              </p>
-              <div class="stat-card contrib-card">
-                <div id="contrib-calendar" class="contrib-calendar">
-                  <div class="contrib-loading">
-                    <i class="fas fa-circle-notch fa-spin" aria-hidden="true"></i>
-                    <span>Loading&hellip;</span>
-                  </div>
-                </div>
-                <div class="contrib-legend">
-                  <span class="legend-label">Less</span>
-                  <span class="legend-cell" data-level="0"></span>
-                  <span class="legend-cell" data-level="1"></span>
-                  <span class="legend-cell" data-level="2"></span>
-                  <span class="legend-cell" data-level="3"></span>
-                  <span class="legend-cell" data-level="4"></span>
-                  <span class="legend-label">More</span>
-                </div>
-              </div>
-            </div>
-
-          </div>
-
-          <!-- Activity graph -->
-          <div class="gh-block gh-block--full">
-            <p class="gh-block-title">
-              <i class="fas fa-chart-line" aria-hidden="true"></i> Activity
-            </p>
-            <div class="stat-card">
-              <img
-                src="https://github-readme-activity-graph.vercel.app/graph?username=diogo-serra&bg_color=0c1424&color=00bfff&line=1e6fff&point=00bfff&area=true&area_color=1e6fff&hide_border=true"
-                alt="GitHub Activity Graph"
-                loading="lazy"
-              />
-            </div>
-          </div>
-
-        </section>
-
-        <footer class="page-footer">
-          <p>
-            Designed &amp; built by <strong>Diogo Serra</strong>
-            &nbsp;&mdash;&nbsp;
-            <a href="https://github.com/Diogo-Serra" target="_blank" rel="noopener noreferrer">
-              <i class="fab fa-github" aria-hidden="true"></i> GitHub
-            </a>
-            &nbsp;&middot;&nbsp;
-            <span id="year"></span>
-          </p>
-        </footer>
-
-      </div><!-- /.content-scroll -->
-
-    </main>
+  <!-- Mobile nav -->
+  <div class="mobile-nav" id="mobile-nav" aria-hidden="true">
+    <a href="#about"      class="mob-link" data-target="about">about</a>
+    <a href="#skills"     class="mob-link" data-target="skills">skills</a>
+    <a href="#experience" class="mob-link" data-target="experience">experience</a>
+    <a href="#projects"   class="mob-link" data-target="projects">projects</a>
+    <a href="#github"     class="mob-link" data-target="github">github</a>
   </div>
 
+  <!-- ══════════════════════════════════
+       HERO
+  ══════════════════════════════════ -->
+  <section id="hero" class="hero">
+    <div class="hero-inner">
+
+      <div class="hero-content">
+        <p class="hero-greeting">
+          <span class="greeting-line"></span>
+          Hi, my name is
+        </p>
+
+        <h1 class="hero-name">Diogo Serra.</h1>
+
+        <div class="hero-role-line">
+          <span class="role-prefix">_</span>
+          <span class="typewriter" id="typewriter" aria-live="polite"></span>
+          <span class="caret" aria-hidden="true"></span>
+        </div>
+
+        <p class="hero-bio">
+          Systems developer focused on <strong>Linux</strong>, <strong>infrastructure automation</strong>,
+          and <strong>DevOps</strong>. Currently deepening low-level engineering foundations at
+          <strong>42 School</strong>, backed by years of operations and service delivery leadership.
+          I bring both technical depth and business context to building reliable, production-grade systems.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#projects" class="btn-primary">
+            <span>See my work</span>
+            <i class="fas fa-arrow-down"></i>
+          </a>
+          <a href="https://github.com/Diogo-Serra" target="_blank" rel="noopener noreferrer" class="btn-outline">
+            <i class="fab fa-github"></i>
+            <span>GitHub</span>
+          </a>
+          <a href="https://www.linkedin.com/in/diogoserra90/" target="_blank" rel="noopener noreferrer" class="btn-outline">
+            <i class="fab fa-linkedin-in"></i>
+            <span>LinkedIn</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-card" aria-hidden="true">
+        <div class="code-window">
+          <div class="window-bar">
+            <span class="wb-dot wb-red"></span>
+            <span class="wb-dot wb-yellow"></span>
+            <span class="wb-dot wb-green"></span>
+            <span class="wb-title">~ zsh</span>
+          </div>
+          <pre class="code-body"><code><span class="cc">$ whoami</span>
+<span class="cv">diogo-serra</span>
+
+<span class="cc">$ cat /etc/profile.d/dev.sh</span>
+<span class="cv">NAME</span><span class="co">=</span><span class="cs">"Diogo Serra"</span>
+<span class="cv">ROLE</span><span class="co">=</span><span class="cs">"Linux Systems Engineer"</span>
+<span class="cv">FOCUS</span><span class="co">=</span><span class="cs">"DevOps · SysAdmin · Systems"</span>
+<span class="cv">SCHOOL</span><span class="co">=</span><span class="cs">"42 School"</span>
+<span class="cv">OPEN_TO_WORK</span><span class="co">=</span><span class="ck">true</span>
+
+<span class="cc">$ systemctl status career</span>
+<span class="cn">●</span> career.service <span class="cc">- Linux Systems Engineer</span>
+   Loaded: <span class="cv">loaded</span>
+   Active: <span class="cv">active (running)</span>
+
+<span class="cc">$ uname -a</span>
+<span class="cv">Linux</span> diogo-serra <span class="cs">42School</span>
+<span class="cv">x86_64</span> GNU/Linux <span class="cn">open-source</span>
+
+<span class="cc">$ _</span></code></pre>
+        </div>
+      </div>
+
+    </div>
+
+    <a href="#about" class="hero-scroll" aria-label="Scroll to about">
+      <i class="fas fa-chevron-down"></i>
+    </a>
+  </section>
+
+  <!-- ══════════════════════════════════
+       ABOUT
+  ══════════════════════════════════ -->
+  <section id="about" class="section reveal">
+    <div class="section-inner">
+      <div class="section-label">
+        <span class="label-num">01.</span>
+        <span class="label-text">About me</span>
+        <span class="label-line"></span>
+      </div>
+
+      <div class="about-grid">
+        <div class="about-text">
+          <p>
+            I'm a <strong>software developer</strong> with a passion for
+            <strong>systems programming</strong> and understanding how everything works
+            beneath the surface. Currently sharpening my craft at <strong>42 School</strong>,
+            a peer-to-peer, project-based engineering programme with no lectures,
+            no shortcuts, only code.
+          </p>
+          <p>
+            Passionate about low-level coding, automation, and building systems
+            that are not only functional but <em>secure by design</em>. I love
+            understanding how things work beneath the surface.
+          </p>
+          <p>
+            After years of professional experience in management roles within
+            <strong>tech services outsourcing companies</strong>, I'm now making the
+            transition into the tech industry full-time, bringing a strong foundation
+            in people, processes, and the business side of technology.
+          </p>
+          <p>
+            Outside of code: cat person, longtime gamer,
+            <em>Souls games</em>, <em>Baldur's Gate</em>, <em>Path of Exile</em>,
+            survival games, and a <em>Magic: The Gathering</em> player since a young age.
+          </p>
+        </div>
+
+        <div class="about-side">
+          <div class="about-photo-wrap">
+            <img src="public/photo.jpeg" alt="Diogo Serra" class="about-photo" />
+            <div class="photo-border" aria-hidden="true"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="about-highlights">
+        <div class="hl-item reveal-child">
+          <i class="fas fa-microchip"></i>
+          <span>Systems Programming</span>
+        </div>
+        <div class="hl-item reveal-child">
+          <i class="fas fa-shield-halved"></i>
+          <span>System Administration</span>
+        </div>
+        <div class="hl-item reveal-child">
+          <i class="fas fa-terminal"></i>
+          <span>Linux &amp; Unix</span>
+        </div>
+        <div class="hl-item reveal-child">
+          <i class="fas fa-brain"></i>
+          <span>Machine Learning</span>
+        </div>
+        <div class="hl-item reveal-child">
+          <i class="fab fa-osi"></i>
+          <span>Open Source</span>
+        </div>
+        <div class="hl-item reveal-child">
+          <i class="fas fa-infinity"></i>
+          <span>DevOps</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════
+       SKILLS
+  ══════════════════════════════════ -->
+  <section id="skills" class="section reveal section-alt">
+    <div class="section-inner">
+      <div class="section-label">
+        <span class="label-num">02.</span>
+        <span class="label-text">Skills &amp; Tools</span>
+        <span class="label-line"></span>
+      </div>
+
+      <div class="skills-grid">
+
+        <div class="skill-card reveal-child">
+          <div class="skill-card-icon"><i class="fas fa-code"></i></div>
+          <h3 class="skill-card-title">Languages</h3>
+          <div class="tags">
+            <span class="tag">C</span>
+            <span class="tag">Python</span>
+            <span class="tag">Bash</span>
+            <span class="tag">HTML</span>
+            <span class="tag">CSS</span>
+            <span class="tag">Visual Basic</span>
+            <span class="tag">Markdown</span>
+          </div>
+        </div>
+
+        <div class="skill-card reveal-child">
+          <div class="skill-card-icon"><i class="fas fa-wrench"></i></div>
+          <h3 class="skill-card-title">Tools &amp; Tech</h3>
+          <div class="tags">
+            <span class="tag">Nginx</span>
+            <span class="tag">Git</span>
+            <span class="tag">CMake</span>
+            <span class="tag">Vim</span>
+            <span class="tag">VS Code</span>
+            <span class="tag">Docker</span>
+          </div>
+        </div>
+
+        <div class="skill-card reveal-child">
+          <div class="skill-card-icon"><i class="fas fa-database"></i></div>
+          <h3 class="skill-card-title">Databases</h3>
+          <div class="tags">
+            <span class="tag">MySQL</span>
+            <span class="tag">MongoDB</span>
+          </div>
+        </div>
+
+        <div class="skill-card reveal-child">
+          <div class="skill-card-icon"><i class="fab fa-linux"></i></div>
+          <h3 class="skill-card-title">Operating Systems</h3>
+          <div class="tags">
+            <span class="tag">Linux</span>
+            <span class="tag">macOS</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════
+       EXPERIENCE
+  ══════════════════════════════════ -->
+  <section id="experience" class="section reveal">
+    <div class="section-inner">
+      <div class="section-label">
+        <span class="label-num">03.</span>
+        <span class="label-text">Experience</span>
+        <span class="label-line"></span>
+      </div>
+
+      <div class="timeline">
+
+        <div class="tl-item reveal-child">
+          <div class="tl-left">
+            <div class="tl-icon"><i class="fas fa-graduation-cap"></i></div>
+            <div class="tl-spine"></div>
+          </div>
+          <div class="tl-right">
+            <div class="tl-badge current">Current</div>
+            <h3 class="tl-title">Software Engineering Student</h3>
+            <p class="tl-place">42 School</p>
+            <p class="tl-desc">
+              Intensive peer-to-peer learning environment with zero lectures,
+              pure project-based engineering. Building everything from scratch:
+              Unix shells, memory allocators, network daemons, 3D ray-casters, and more.
+            </p>
+            <div class="tags">
+              <span class="tag accent">C</span>
+              <span class="tag accent">Linux</span>
+              <span class="tag accent">Unix</span>
+              <span class="tag accent">Algorithms</span>
+              <span class="tag accent">Networks</span>
+              <span class="tag accent">Security</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="tl-item reveal-child">
+          <div class="tl-left">
+            <div class="tl-icon"><i class="fas fa-water"></i></div>
+            <div class="tl-spine"></div>
+          </div>
+          <div class="tl-right">
+            <div class="tl-badge passed">Passed</div>
+            <h3 class="tl-title">La Piscine</h3>
+            <p class="tl-place">42 School · Admission</p>
+            <p class="tl-desc">
+              Four weeks of survival-mode coding. No teachers, no tutorials, just
+              daily exercises, group projects and exams in C, all peer-evaluated.
+              One of the hardest admission processes in tech education.
+            </p>
+            <div class="tags">
+              <span class="tag accent">C</span>
+              <span class="tag accent">Shell</span>
+              <span class="tag accent">Peer Review</span>
+              <span class="tag accent">Problem Solving</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="tl-item reveal-child">
+          <div class="tl-left">
+            <div class="tl-icon"><i class="fas fa-rotate"></i></div>
+            <div class="tl-spine"></div>
+          </div>
+          <div class="tl-right">
+            <div class="tl-badge passed">Passed</div>
+            <h3 class="tl-title">Piscina Reloaded</h3>
+            <p class="tl-place">42 School · Refresher</p>
+            <p class="tl-desc">
+              A second dive, same intensity, sharper focus. Revisits Piscine
+              fundamentals with harder challenges, reinforcing core C skills and the
+              mindset that carries you through the rest of the 42 cursus.
+            </p>
+            <div class="tags">
+              <span class="tag accent">C</span>
+              <span class="tag accent">Algorithms</span>
+              <span class="tag accent">Memory</span>
+              <span class="tag accent">Unix</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="tl-item reveal-child">
+          <div class="tl-left">
+            <div class="tl-icon"><i class="fas fa-briefcase"></i></div>
+          </div>
+          <div class="tl-right">
+            <div class="tl-badge previous">Previous</div>
+            <h3 class="tl-title">Operations &amp; Service Delivery Manager</h3>
+            <p class="tl-place">Tech Services Outsourcing · Enterprise Clients</p>
+            <p class="tl-desc">
+              Led service delivery and operations teams across large-scale outsourcing
+              engagements for enterprise clients in finance, telecom and retail.
+              Responsible for SLA governance, cross-functional team management,
+              process optimisation and stakeholder communication at C-level.
+            </p>
+            <div class="tags">
+              <span class="tag accent">Leadership</span>
+              <span class="tag accent">Outsourcing</span>
+              <span class="tag accent">Operations</span>
+              <span class="tag accent">Client Management</span>
+              <span class="tag accent">SLA &amp; KPI Governance</span>
+              <span class="tag accent">Process Optimisation</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════
+       PROJECTS
+  ══════════════════════════════════ -->
+  <section id="projects" class="section reveal section-alt">
+    <div class="section-inner">
+      <div class="section-label">
+        <span class="label-num">04.</span>
+        <span class="label-text">Projects</span>
+        <span class="label-line"></span>
+      </div>
+
+      <div id="repos-grid" class="repos-grid">
+        <div class="repos-status">
+          <i class="fas fa-circle-notch fa-spin"></i>
+          <span>Fetching repositories&hellip;</span>
+        </div>
+      </div>
+
+      <div class="section-cta">
+        <a href="https://github.com/Diogo-Serra?tab=repositories" target="_blank" rel="noopener noreferrer" class="btn-primary">
+          <span>All repositories</span>
+          <i class="fab fa-github"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════
+       GITHUB
+  ══════════════════════════════════ -->
+  <section id="github" class="section reveal">
+    <div class="section-inner">
+      <div class="section-label">
+        <span class="label-num">05.</span>
+        <span class="label-text">GitHub Presence</span>
+        <span class="label-line"></span>
+      </div>
+
+      <div class="gh-stats-row reveal-child">
+        <div class="gh-stat">
+          <i class="fas fa-book-bookmark"></i>
+          <span class="gh-val" id="m-repos">—</span>
+          <span class="gh-lbl">Repos</span>
+        </div>
+        <div class="gh-stat">
+          <i class="fas fa-users"></i>
+          <span class="gh-val" id="m-followers">—</span>
+          <span class="gh-lbl">Followers</span>
+        </div>
+        <div class="gh-stat">
+          <i class="fas fa-star"></i>
+          <span class="gh-val" id="m-stars">—</span>
+          <span class="gh-lbl">Stars</span>
+        </div>
+        <div class="gh-stat">
+          <i class="fas fa-code-fork"></i>
+          <span class="gh-val" id="m-forks">—</span>
+          <span class="gh-lbl">Forks</span>
+        </div>
+      </div>
+
+      <div class="gh-cards">
+
+        <div class="gh-card reveal-child">
+          <p class="gh-card-title"><i class="fas fa-fire"></i> Current Streak</p>
+          <div class="gh-img-wrap">
+            <img src="https://streak-stats.vercel.app/?user=diogo-serra&theme=nord&hide_border=true&background=0d1117&ring=00bfff&fire=1e6fff&currStreakLabel=00bfff&currStreakNum=e2e8f0&sideLabels=64748b&dates=475569" alt="GitHub Streak" loading="lazy" />
+          </div>
+        </div>
+
+        <div class="gh-card reveal-child">
+          <p class="gh-card-title"><i class="fas fa-calendar-days"></i> Daily Contributions</p>
+          <div class="contrib-wrap">
+            <div id="contrib-calendar" class="contrib-calendar">
+              <div class="contrib-loading">
+                <i class="fas fa-circle-notch fa-spin"></i>
+                <span>Loading&hellip;</span>
+              </div>
+            </div>
+            <div class="contrib-legend">
+              <span class="legend-label">Less</span>
+              <span class="legend-cell" data-level="0"></span>
+              <span class="legend-cell" data-level="1"></span>
+              <span class="legend-cell" data-level="2"></span>
+              <span class="legend-cell" data-level="3"></span>
+              <span class="legend-cell" data-level="4"></span>
+              <span class="legend-label">More</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="gh-card gh-card--full reveal-child">
+        <p class="gh-card-title"><i class="fas fa-chart-line"></i> Activity Graph</p>
+        <div class="gh-img-wrap">
+          <img src="https://github-readme-activity-graph.vercel.app/graph?username=diogo-serra&bg_color=0d1117&color=00bfff&line=1e6fff&point=00bfff&area=true&area_color=1e6fff&hide_border=true" alt="GitHub Activity Graph" loading="lazy" />
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════
+       FOOTER
+  ══════════════════════════════════ -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <p class="footer-quote">&ldquo;You must gather your party before venturing forth&rdquo;</p>
+      <p class="footer-copy">
+        Designed &amp; built by <strong>Diogo Serra</strong>
+        <span class="footer-sep">·</span>
+        <a href="https://github.com/Diogo-Serra" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/diogoserra90/" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin-in"></i></a>
+        <span class="footer-sep">·</span>
+        <span id="year"></span>
+      </p>
+    </div>
+  </footer>
+
   <script>
-    // ── Current year
-    document.getElementById('year').textContent = new Date().getFullYear();
+  // ── Year
+  document.getElementById('year').textContent = new Date().getFullYear();
 
-    // ── Always start at top, clear any hash
-    if (window.location.hash) {
-      history.replaceState(null, '', window.location.pathname);
-    }
-    document.querySelector('.content-scroll').scrollTop = 0;
+  // ── Cursor glow (desktop only)
+  const glow = document.getElementById('cursor-glow');
+  let mx = -200, my = -200;
+  document.addEventListener('mousemove', e => {
+    mx = e.clientX; my = e.clientY;
+    glow.style.transform = `translate(${mx}px,${my}px)`;
+  });
 
-    // ── Smooth navigation + active state
-    const panel     = document.querySelector('.content-scroll');
-    const navLinks  = document.querySelectorAll('.nav-link, .banner-nav-link');
-    const sections  = document.querySelectorAll('.section');
+  // ── Scroll progress bar
+  const prog = document.getElementById('scroll-progress');
+  window.addEventListener('scroll', () => {
+    const pct = window.scrollY / (document.body.scrollHeight - window.innerHeight) * 100;
+    prog.style.width = pct + '%';
+  }, { passive: true });
 
-    function setActive(id) {
-      navLinks.forEach(link =>
-        link.classList.toggle('active', link.dataset.target === id)
-      );
-    }
+  // ── Navbar: scroll + active
+  const navbar  = document.getElementById('navbar');
+  const navLinks = document.querySelectorAll('.nav-link, .mob-link');
+  const sections = document.querySelectorAll('section[id]');
 
-    navLinks.forEach(link => {
-      link.addEventListener('click', e => {
-        e.preventDefault();
-        const target = document.getElementById(link.dataset.target);
-        if (target) panel.scrollTo({ top: target.offsetTop - 32, behavior: 'smooth' });
-      });
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 60);
+
+    let current = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 140) current = s.id;
     });
+    navLinks.forEach(l => l.classList.toggle('active', l.dataset.target === current));
+  }, { passive: true });
 
-    panel.addEventListener('scroll', () => {
-      let current = sections[0].id;
-      sections.forEach(sec => {
-        if (panel.scrollTop >= sec.offsetTop - 120) current = sec.id;
-      });
-      setActive(current);
+  // ── Smooth scroll
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const id = a.getAttribute('href').slice(1);
+      const el = document.getElementById(id);
+      if (!el) return;
+      e.preventDefault();
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      // close mobile menu
+      if (mobileOpen) toggleMobile();
     });
+  });
 
-    // ── Scroll reveal via IntersectionObserver
-    const revealObs = new IntersectionObserver(
-      entries => entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          revealObs.unobserve(entry.target);
-        }
-      }),
-      { threshold: 0.07, rootMargin: '0px 0px -30px 0px', root: panel }
-    );
+  // ── Mobile nav toggle
+  const toggle = document.getElementById('nav-toggle');
+  const mobileNav = document.getElementById('mobile-nav');
+  let mobileOpen = false;
 
-    sections.forEach(el => revealObs.observe(el));
-    document.querySelectorAll('.timeline-item').forEach(el => revealObs.observe(el));
+  function toggleMobile() {
+    mobileOpen = !mobileOpen;
+    toggle.classList.toggle('open', mobileOpen);
+    toggle.setAttribute('aria-expanded', mobileOpen);
+    mobileNav.classList.toggle('open', mobileOpen);
+    mobileNav.setAttribute('aria-hidden', !mobileOpen);
+  }
 
-    // ── GitHub repos
-    const LANG_COLORS = {
-      C:          '#555555',
-      'C++':      '#f34b7d',
-      Python:     '#3572a5',
-      JavaScript: '#f1e05a',
-      TypeScript: '#2b7489',
-      HTML:       '#e34c26',
-      CSS:        '#563d7c',
-      Shell:      '#89e051',
-      Makefile:   '#427819',
-    };
+  toggle.addEventListener('click', toggleMobile);
 
-    async function loadRepos() {
-      const grid = document.getElementById('repos-grid');
-      try {
-        const res = await fetch(
-          'https://api.github.com/users/Diogo-Serra/repos?sort=updated&per_page=18&type=public'
-        );
-        if (!res.ok) throw new Error('API error');
-
-        const repos = await res.json();
-        const HIDDEN = ['Diogo-Serra', 'Diogo-Serra.github.io'];
-        const items = repos.filter(r => !r.fork && !HIDDEN.includes(r.name)).slice(0, 12);
-
-        if (!items.length) {
-          grid.innerHTML = '<p class="repos-status">No public repositories found.</p>';
-          return;
-        }
-
-        grid.innerHTML = items.map((repo, i) => {
-          const langColor = LANG_COLORS[repo.language] || '#00bfff';
-          const desc = repo.description
-            ? repo.description.replace(/</g, '&lt;').replace(/>/g, '&gt;')
-            : 'No description.';
-
-          return `
-            <a href="${repo.html_url}" target="_blank" rel="noopener noreferrer" class="repo-card" style="transition-delay:${i * 0.04}s">
-              <div class="repo-top">
-                <span class="repo-name">
-                  <i class="fas fa-book-bookmark" aria-hidden="true"></i>
-                  ${repo.name}
-                </span>
-                <i class="fas fa-arrow-up-right-from-square repo-ext" aria-hidden="true"></i>
-              </div>
-              <p class="repo-desc">${desc}</p>
-              <div class="repo-meta">
-                ${repo.language ? `
-                  <span class="repo-lang">
-                    <span class="lang-dot" style="background:${langColor}"></span>
-                    ${repo.language}
-                  </span>` : ''}
-                ${repo.stargazers_count > 0 ? `
-                  <span class="repo-stat">
-                    <i class="fas fa-star" aria-hidden="true"></i> ${repo.stargazers_count}
-                  </span>` : ''}
-                ${repo.forks_count > 0 ? `
-                  <span class="repo-stat">
-                    <i class="fas fa-code-fork" aria-hidden="true"></i> ${repo.forks_count}
-                  </span>` : ''}
-              </div>
-            </a>
-          `;
-        }).join('');
-
-        // Observe newly injected repo cards
-        document.querySelectorAll('.repo-card').forEach(el => revealObs.observe(el));
-
-      } catch {
-        grid.innerHTML = `
-          <div class="repos-status repos-error">
-            <i class="fas fa-triangle-exclamation" aria-hidden="true"></i>
-            <span>Could not load repositories.
-              <a href="https://github.com/Diogo-Serra?tab=repositories"
-                 target="_blank" rel="noopener noreferrer">View on GitHub</a>
-            </span>
-          </div>`;
+  // ── Scroll reveal (Intersection Observer)
+  const revealObs = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        revealObs.unobserve(entry.target);
       }
+    });
+  }, { threshold: 0.07, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.reveal, .reveal-child').forEach(el => revealObs.observe(el));
+
+  // ── Typewriter
+  const roles = [
+    'Linux Systems Engineer.',
+    'DevOps & Infrastructure.',
+    'Systems Administrator.',
+    'Open Source Contributor.',
+    'Automation Focused.',
+  ];
+  let ri = 0, ci = 0, deleting = false;
+  const tw = document.getElementById('typewriter');
+
+  function typeStep() {
+    const role = roles[ri];
+    if (!deleting) {
+      tw.textContent = role.slice(0, ++ci);
+      if (ci === role.length) { deleting = true; setTimeout(typeStep, 1800); return; }
+    } else {
+      tw.textContent = role.slice(0, --ci);
+      if (ci === 0) { deleting = false; ri = (ri + 1) % roles.length; setTimeout(typeStep, 300); return; }
     }
+    setTimeout(typeStep, deleting ? 45 : 80);
+  }
+  setTimeout(typeStep, 700);
 
-    loadRepos();
+  // ── GitHub repos
+  const LANG_COLORS = {
+    C:'#555555','C++':'#f34b7d',Python:'#3572a5',
+    JavaScript:'#f1e05a',TypeScript:'#2b7489',
+    HTML:'#e34c26',CSS:'#563d7c',Shell:'#89e051',Makefile:'#427819',
+  };
 
-    // ── GitHub presence metrics
-    async function loadGithubStats() {
-      try {
-        const [userRes, reposRes] = await Promise.all([
-          fetch('https://api.github.com/users/Diogo-Serra'),
-          fetch('https://api.github.com/users/Diogo-Serra/repos?per_page=100&type=public'),
-        ]);
-        if (!userRes.ok || !reposRes.ok) return;
-        const user  = await userRes.json();
-        const repos = await reposRes.json();
-        const stars = repos.reduce((s, r) => s + (r.stargazers_count || 0), 0);
-        const forks = repos.reduce((s, r) => s + (r.forks_count      || 0), 0);
-        const vals = {
-          'm-repos':     user.public_repos ?? repos.length,
-          'm-followers': user.followers    ?? 0,
-          'm-stars':     stars,
-          'm-forks':     forks,
+  async function loadRepos() {
+    const grid = document.getElementById('repos-grid');
+    try {
+      const res = await fetch('https://api.github.com/users/Diogo-Serra/repos?sort=updated&per_page=18&type=public');
+      if (!res.ok) throw new Error();
+      const repos = await res.json();
+      const HIDDEN = ['Diogo-Serra', 'Diogo-Serra.github.io'];
+      const items = repos.filter(r => !r.fork && !HIDDEN.includes(r.name)).slice(0, 9);
+      if (!items.length) { grid.innerHTML = '<p class="repos-status">No public repositories found.</p>'; return; }
+
+      grid.innerHTML = items.map((repo, i) => {
+        const lc = LANG_COLORS[repo.language] || '#00bfff';
+        const desc = (repo.description || 'No description.').replace(/[<>]/g, c => c === '<' ? '&lt;' : '&gt;');
+        return `
+          <a href="${repo.html_url}" target="_blank" rel="noopener noreferrer" class="repo-card reveal-child" style="transition-delay:${i*0.06}s">
+            <div class="rc-top">
+              <span class="rc-icon"><i class="fas fa-book-bookmark"></i></span>
+              <span class="rc-name">${repo.name}</span>
+              <i class="fas fa-arrow-up-right-from-square rc-ext"></i>
+            </div>
+            <p class="rc-desc">${desc}</p>
+            <div class="rc-meta">
+              ${repo.language ? `<span class="rc-lang"><span class="lang-dot" style="background:${lc}"></span>${repo.language}</span>` : ''}
+              ${repo.stargazers_count > 0 ? `<span class="rc-stat"><i class="fas fa-star"></i>${repo.stargazers_count}</span>` : ''}
+              ${repo.forks_count > 0 ? `<span class="rc-stat"><i class="fas fa-code-fork"></i>${repo.forks_count}</span>` : ''}
+            </div>
+          </a>`;
+      }).join('');
+
+      document.querySelectorAll('.repo-card.reveal-child').forEach(el => revealObs.observe(el));
+    } catch {
+      grid.innerHTML = `<div class="repos-status repos-error"><i class="fas fa-triangle-exclamation"></i><span>Could not load repos. <a href="https://github.com/Diogo-Serra?tab=repositories" target="_blank" rel="noopener noreferrer">View on GitHub</a></span></div>`;
+    }
+  }
+  loadRepos();
+
+  // ── GitHub stats
+  async function loadGithubStats() {
+    try {
+      const [uRes, rRes] = await Promise.all([
+        fetch('https://api.github.com/users/Diogo-Serra'),
+        fetch('https://api.github.com/users/Diogo-Serra/repos?per_page=100&type=public'),
+      ]);
+      if (!uRes.ok || !rRes.ok) return;
+      const u = await uRes.json(), r = await rRes.json();
+      const vals = {
+        'm-repos': u.public_repos ?? r.length,
+        'm-followers': u.followers ?? 0,
+        'm-stars': r.reduce((s, x) => s + (x.stargazers_count || 0), 0),
+        'm-forks': r.reduce((s, x) => s + (x.forks_count || 0), 0),
+      };
+      Object.entries(vals).forEach(([id, target]) => {
+        const el = document.getElementById(id);
+        if (!el) return;
+        let t0 = null;
+        const tick = ts => {
+          if (!t0) t0 = ts;
+          const p = Math.min((ts - t0) / 900, 1);
+          el.textContent = Math.round(p * target);
+          if (p < 1) requestAnimationFrame(tick);
         };
-        Object.entries(vals).forEach(([id, target]) => {
-          const el = document.getElementById(id);
-          if (!el) return;
-          let t0 = null;
-          const dur = 900;
-          const tick = ts => {
-            if (!t0) t0 = ts;
-            const p = Math.min((ts - t0) / dur, 1);
-            el.textContent = Math.round(p * target);
-            if (p < 1) requestAnimationFrame(tick);
-          };
-          requestAnimationFrame(tick);
-        });
-      } catch { /* silent */ }
-    }
-    loadGithubStats();
+        requestAnimationFrame(tick);
+      });
+    } catch { /* silent */ }
+  }
+  loadGithubStats();
 
-    // ── Contribution heatmap
-    async function loadContributions() {
-      const container = document.getElementById('contrib-calendar');
-      if (!container) return;
-      try {
-        const res = await fetch('https://github-contributions-api.jogruber.de/v4/diogo-serra?y=last');
-        if (!res.ok) throw new Error();
-        const data = await res.json();
-        const dayMap = {};
-        data.contributions.forEach(d => { dayMap[d.date] = d; });
+  // ── Contribution heatmap
+  async function loadContributions() {
+    const container = document.getElementById('contrib-calendar');
+    if (!container) return;
+    try {
+      const res = await fetch('https://github-contributions-api.jogruber.de/v4/diogo-serra?y=last');
+      if (!res.ok) throw new Error();
+      const data = await res.json();
+      const dayMap = {};
+      data.contributions.forEach(d => { dayMap[d.date] = d; });
 
-        const today = new Date();
-        today.setHours(0,0,0,0);
-        const end = new Date(today);
-        end.setDate(today.getDate() + (6 - today.getDay()));
-        const start = new Date(end);
-        start.setDate(end.getDate() - 52 * 7 + 1);
+      const today = new Date(); today.setHours(0,0,0,0);
+      const end = new Date(today); end.setDate(today.getDate() + (6 - today.getDay()));
+      const start = new Date(end); start.setDate(end.getDate() - 52 * 7 + 1);
 
-        const weeks = [];
-        let cur = new Date(start);
-        for (let w = 0; w < 52; w++) {
-          const week = [];
-          for (let d = 0; d < 7; d++) {
-            const ds = cur.toISOString().split('T')[0];
-            const c  = dayMap[ds];
-            week.push({ date: ds, level: c ? c.level : 0, count: c ? c.count : 0 });
-            cur.setDate(cur.getDate() + 1);
-          }
-          weeks.push(week);
+      const weeks = [];
+      let cur = new Date(start);
+      for (let w = 0; w < 52; w++) {
+        const week = [];
+        for (let d = 0; d < 7; d++) {
+          const ds = cur.toISOString().split('T')[0];
+          const c = dayMap[ds];
+          week.push({ date: ds, level: c ? c.level : 0, count: c ? c.count : 0 });
+          cur.setDate(cur.getDate() + 1);
         }
+        weeks.push(week);
+      }
 
-        const MO = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-        let lastM = -1;
-        let mHtml = '<div class="contrib-months">';
-        weeks.forEach(wk => {
-          const m = new Date(wk[0].date).getMonth();
-          mHtml += `<span class="contrib-month-lbl">${m !== lastM ? MO[m] : ''}</span>`;
-          lastM = m;
-        });
-        mHtml += '</div>';
+      const MO = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+      let lastM = -1, mHtml = '<div class="contrib-months">';
+      weeks.forEach(wk => {
+        const m = new Date(wk[0].date).getMonth();
+        mHtml += `<span class="contrib-month-lbl">${m !== lastM ? MO[m] : ''}</span>`;
+        lastM = m;
+      });
+      mHtml += '</div>';
 
-        let wHtml = '<div class="contrib-weeks">';
-        weeks.forEach(wk => {
-          wHtml += '<div class="contrib-week">';
-          wk.forEach(day => {
-            const lbl = `${day.date}: ${day.count} contribution${day.count !== 1 ? 's' : ''}`;
-            wHtml += `<div class="contrib-day" data-level="${day.level}" title="${lbl}"></div>`;
-          });
-          wHtml += '</div>';
+      let wHtml = '<div class="contrib-weeks">';
+      weeks.forEach(wk => {
+        wHtml += '<div class="contrib-week">';
+        wk.forEach(day => {
+          wHtml += `<div class="contrib-day" data-level="${day.level}" title="${day.date}: ${day.count} contribution${day.count !== 1 ? 's' : ''}"></div>`;
         });
         wHtml += '</div>';
+      });
+      wHtml += '</div>';
 
-        container.innerHTML = mHtml + wHtml;
-      } catch {
-        container.innerHTML = '<p style="padding:16px;color:var(--text-muted);font-size:.8rem;text-align:center">Could not load contributions.</p>';
-      }
+      container.innerHTML = mHtml + wHtml;
+    } catch {
+      container.innerHTML = '<p style="padding:1rem;color:var(--muted);font-size:.8rem;text-align:center">Could not load contributions.</p>';
     }
-    loadContributions();
+  }
+  loadContributions();
 
   </script>
 </body>
