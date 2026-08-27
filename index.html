@@ -33,7 +33,9 @@
   ══════════════════════════════════ -->
   <nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
     <a href="#hero" class="nav-brand" aria-label="Home">
-      <span class="brand-bracket">&lt;</span>DS<span class="brand-bracket">/&gt;</span>
+      <span class="brand-name">Diogo Serra</span>
+      <span class="brand-separator">-</span>
+      <span class="brand-role">Software Developer</span>
     </a>
 
     <div class="nav-links">
@@ -534,8 +536,11 @@
 
       <div class="gh-card gh-card--full reveal-child">
         <p class="gh-card-title"><i class="fas fa-chart-line"></i> Activity Graph</p>
-        <div class="gh-img-wrap">
-          <img src="https://github-readme-activity-graph.vercel.app/graph?username=diogo-serra&bg_color=0d1117&color=00bfff&line=1e6fff&point=00bfff&area=true&area_color=1e6fff&hide_border=true" alt="GitHub Activity Graph" loading="lazy" />
+        <div class="activity-graph" id="activity-graph" aria-label="GitHub contribution activity over the last year">
+          <div class="contrib-loading">
+            <i class="fas fa-circle-notch fa-spin"></i>
+            <span>Loading&hellip;</span>
+          </div>
         </div>
       </div>
 
@@ -731,7 +736,78 @@
   }
   loadGithubStats();
 
-  // ── Contribution heatmap
+  function renderActivityGraph(contributions) {
+    const graph = document.getElementById('activity-graph');
+    if (!graph) return;
+
+    const weeks = [];
+    for (let index = 0; index < contributions.length; index += 7) {
+      const days = contributions.slice(index, index + 7);
+      weeks.push({
+        date: days[0].date,
+        count: days.reduce((sum, day) => sum + day.count, 0),
+      });
+    }
+
+    const width = 1000, height = 340;
+    const margin = { top: 24, right: 24, bottom: 64, left: 76 };
+    const plotWidth = width - margin.left - margin.right;
+    const plotHeight = height - margin.top - margin.bottom;
+    const highest = Math.max(...weeks.map(week => week.count), 1);
+    const roughStep = highest / 4;
+    const magnitude = 10 ** Math.floor(Math.log10(roughStep));
+    const normalized = roughStep / magnitude;
+    const step = (normalized <= 1 ? 1 : normalized <= 2 ? 2 : normalized <= 5 ? 5 : 10) * magnitude;
+    const max = Math.ceil(highest / step) * step;
+    const xAt = index => margin.left + index * (plotWidth / Math.max(weeks.length - 1, 1));
+    const yAt = value => margin.top + plotHeight - (value / max) * plotHeight;
+    const coords = weeks.map((week, index) => {
+      const x = xAt(index);
+      const y = yAt(week.count);
+      return `${x.toFixed(1)},${y.toFixed(1)}`;
+    });
+    const baseline = margin.top + plotHeight;
+    const area = `${margin.left},${baseline} ${coords.join(' ')} ${width - margin.right},${baseline}`;
+    const yTicks = Array.from({ length: Math.round(max / step) + 1 }, (_, index) => index * step);
+    const grid = yTicks.map(value => {
+      const y = yAt(value);
+      return `<line x1="${margin.left}" y1="${y}" x2="${width - margin.right}" y2="${y}" />
+        <text class="activity-tick activity-tick--y" x="${margin.left - 14}" y="${y + 4}">${value}</text>`;
+    }).join('');
+    let previousMonth = -1;
+    const monthTicks = weeks.map((week, index) => {
+      const date = new Date(`${week.date}T00:00:00`);
+      const month = date.getMonth();
+      if (month === previousMonth) return '';
+      previousMonth = month;
+      const label = date.toLocaleDateString('en', { month: 'short' });
+      const x = xAt(index);
+      return `<line class="activity-month-mark" x1="${x}" y1="${baseline}" x2="${x}" y2="${baseline + 6}" />
+        <text class="activity-tick activity-tick--x" x="${x}" y="${baseline + 22}">${label}</text>`;
+    }).join('');
+    const markers = weeks.map((week, index) => {
+      const x = xAt(index), y = yAt(week.count);
+      const label = new Date(`${week.date}T00:00:00`).toLocaleDateString('en', { month: 'short', day: 'numeric', year: 'numeric' });
+      return `<circle class="activity-point" cx="${x}" cy="${y}" r="3"><title>Week of ${label}: ${week.count} contributions</title></circle>`;
+    }).join('');
+
+    graph.innerHTML = `
+      <svg viewBox="0 0 ${width} ${height}" role="img" aria-labelledby="activity-graph-title activity-graph-desc">
+        <title id="activity-graph-title">GitHub contribution activity</title>
+        <desc id="activity-graph-desc">Weekly contribution totals over the last twelve months, with months on the horizontal axis and contribution counts on the vertical axis.</desc>
+        <g class="activity-grid">${grid}</g>
+        <line class="activity-axis" x1="${margin.left}" y1="${baseline}" x2="${width - margin.right}" y2="${baseline}" />
+        <line class="activity-axis" x1="${margin.left}" y1="${margin.top}" x2="${margin.left}" y2="${baseline}" />
+        <g class="activity-months">${monthTicks}</g>
+        <polygon class="activity-area" points="${area}" />
+        <polyline class="activity-line" points="${coords.join(' ')}" />
+        <g class="activity-points">${markers}</g>
+        <text class="activity-axis-label" x="${margin.left + plotWidth / 2}" y="${height - 10}">Last 12 months</text>
+        <text class="activity-axis-label" x="18" y="${margin.top + plotHeight / 2}" transform="rotate(-90 18 ${margin.top + plotHeight / 2})">Contributions per week</text>
+      </svg>`;
+  }
+
+  // ── Contribution heatmap and activity graph
   async function loadContributions() {
     const container = document.getElementById('contrib-calendar');
     if (!container) return;
@@ -739,6 +815,7 @@
       const res = await fetch('https://github-contributions-api.jogruber.de/v4/diogo-serra?y=last');
       if (!res.ok) throw new Error();
       const data = await res.json();
+      renderActivityGraph(data.contributions);
       const dayMap = {};
       data.contributions.forEach(d => { dayMap[d.date] = d; });
 
@@ -781,6 +858,7 @@
       container.innerHTML = mHtml + wHtml;
     } catch {
       container.innerHTML = '<p style="padding:1rem;color:var(--muted);font-size:.8rem;text-align:center">Could not load contributions.</p>';
+      document.getElementById('activity-graph').innerHTML = '<p class="graph-error">Could not load activity data.</p>';
     }
   }
   loadContributions();
