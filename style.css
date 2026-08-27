@@ -1411,8 +1411,17 @@ em { color: var(--blue-2); }
   transform: rotate(1.2deg);
 }
 .window-bar { background: #17263a; border-color: rgba(255,255,255,0.1); }
-.wb-title { font-family: 'IBM Plex Mono', monospace; }
-.code-body { font-family: 'IBM Plex Mono', monospace; }
+.wb-title { color: #91a4bb; font-family: 'IBM Plex Mono', monospace; }
+.code-body {
+  color: #dce6f2;
+  font-family: 'IBM Plex Mono', monospace;
+}
+.code-body .cc { color: #91a4bb; }
+.code-body .cv { color: #f4f7fb; }
+.code-body .cs { color: #7dd3fc; }
+.code-body .cn { color: #38bdf8; }
+.code-body .ck,
+.code-body .co { color: #fb7185; }
 .hero-scroll { color: var(--blue); }
 
 .section {
